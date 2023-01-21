@@ -3,12 +3,17 @@
 To load dotfiles from this repo:
 
 ```sh
-git clone --bare <git-repo-url> $HOME/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles checkout
-dotfiles config --local status.showUntrackedFiles no
-dotfiles config --local include.path <path to .gitconfig file>
+cd $HOME
+git clone git@github.com:jjustin/dotfiles.git $HOME/.dotfiles
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+dot checkout
+dot config --local status.showUntrackedFiles no
+dot config --local include.path <path to .gitconfig file>
 ```
+
+then use `dot` to make changes to the repo.
+
+To get branch files locally use `dot reset --hard <branch>`
 
 ## Gitconfig
 

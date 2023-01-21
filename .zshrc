@@ -3,10 +3,10 @@
 # bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # Pyenv
-PATH=$(pyenv root)/shims:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+PATH=$(pyenv root)/shims:$PATH
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -165,4 +165,4 @@ link_gitconfig() {
 }
 
 # Dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
