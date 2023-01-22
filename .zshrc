@@ -1,7 +1,3 @@
-# #zsh-history-substring-search
-# bindkey "$terminfo[kcuu1]" history-substring-search-up
-# bindkey "$terminfo[kcud1]" history-substring-search-down
-
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -102,7 +98,6 @@ plugins=(
 	pyenv
         zsh-syntax-highlighting
         zsh-autosuggestions
-#       zsh-history-substring-search
         z
 )
 
