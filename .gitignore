@@ -1,1 +1,36 @@
 .dotfiles
+
+# Ignore every default folder in Home directory created by macOS
+.Trash
+Applications
+Desktop
+Documents
+Downloads
+Dropbox
+Movies
+Music
+Pictures
+Public
+
+# Ignore other code
+Code
+
+# Ignore other common folders
+.aws
+.cache
+.local
+.node-gyp
+.npm
+.ssh
+.vscode
+
+# Ignore CLI history files
+.bash_history
+.lesshst
+.node_repl_history
+.psql_history
+.python_history
+.viminfo
+
+# Ignore where gh stores GitHub access token
+.config/gh/hosts.yml

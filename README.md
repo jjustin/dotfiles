@@ -41,3 +41,7 @@ $HOME/
 │  ├─ project2/
 ...
 ```
+
+## Notes
+
+- <https://github.com/PatrickF1/dotfiles>
