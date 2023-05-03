@@ -1,0 +1,13 @@
+beekeeper-studio
+karabiner-elements
+chromium
+discord
+hex-fiend
+ngrok
+postman
+visual-studio-code
+dbeaver-community
+drawio
+karabiner-elements
+obsidian
+spotify

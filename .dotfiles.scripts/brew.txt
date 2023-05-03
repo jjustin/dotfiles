@@ -1,0 +1,12 @@
+difftastic
+direnv
+go
+jq
+k9s
+kube-score
+kubernetes-cli
+magic-wormhole
+mysql
+orbstack
+tldr
+yarn
