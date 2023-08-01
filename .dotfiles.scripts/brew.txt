@@ -13,3 +13,4 @@ yarn
 stern
 nvim
 tig
+gpg
