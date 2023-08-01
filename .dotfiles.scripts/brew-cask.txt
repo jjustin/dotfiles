@@ -1,3 +1,5 @@
+iterm2
+brave-browser
 beekeeper-studio
 karabiner-elements
 chromium
@@ -6,8 +8,8 @@ hex-fiend
 ngrok
 postman
 visual-studio-code
-dbeaver-community
 drawio
 karabiner-elements
 obsidian
 spotify
+aws-vault

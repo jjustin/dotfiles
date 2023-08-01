@@ -11,3 +11,5 @@ orbstack
 tldr
 yarn
 stern
+nvim
+tig
