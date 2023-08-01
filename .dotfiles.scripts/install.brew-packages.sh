@@ -1,5 +1,8 @@
 #!/bin/bash
-brew 2> /dev/null || {echo brew not installed &&  exit 1}
+if ! command -v brew &> /dev/null; then
+    echo "Homebrew is not installed. Please install Homebrew before running this script."
+    exit 1
+fi
 
 brew install $(<brew.txt)
 brew install --cask $(<brew-cask.txt)

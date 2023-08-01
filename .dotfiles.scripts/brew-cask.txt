@@ -13,3 +13,4 @@ karabiner-elements
 obsidian
 spotify
 aws-vault
+rectangle
