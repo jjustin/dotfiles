@@ -3,6 +3,7 @@ export GPG_TTY=$TTY
 
 # direnv hook and p10k instant prompt
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -13,15 +14,6 @@ fi
 # Load direnv if installed
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
-PATH=$(pyenv root)/shims:$PATH
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # Pupeteer fix
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 export PUPPETEER_EXECUTABLE_PATH=`which chromium`
@@ -29,9 +21,6 @@ export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 # Golang
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
-
-# Run gpg in current tty
-export GPG_TTY=$(tty)
 
 
 # If you come from bash you might have to change your $PATH.
@@ -108,12 +97,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+        aws
 	fzf
         git
-	pyenv
         zsh-syntax-highlighting
         zsh-autosuggestions
         z
+        zsh-aws-vault
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -129,7 +119,6 @@ fi
 # AWS autocomplete
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
-complete -C '/usr/local/bin/aws_completer' aws
 
 # .gitconfig linking
 git() {
@@ -179,3 +168,17 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+compctl -g '~/.itermocil/*(:t:r)' itermocil
+alias iterm='itermocil'
+alias polarium_cognito_token_copy='echo -n $(~/3fs/polarium/services/get-token.sh) | clipcopy'
+
+export RPROMPT='$(prompt_aws_vault_segment)'
+
+opatest() {
+        regal lint $1
+        opa test $1
+}

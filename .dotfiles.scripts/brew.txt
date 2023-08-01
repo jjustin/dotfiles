@@ -10,3 +10,4 @@ mysql
 orbstack
 tldr
 yarn
+stern

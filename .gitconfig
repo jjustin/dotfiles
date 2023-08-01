@@ -20,9 +20,10 @@
 [alias]
         a = add
         aa = add --all
-        ####
+        #### Branches
         br = branch
 	brd = branch -d
+        newbr = "!f(){ git branch $1; git co $1; };f"
         ####
         c = commit
         ca = commit --amend
@@ -36,13 +37,14 @@
         ####
         f = fetch
         fap = fetch --all --prune
-        faprbma = !git stash && git fap && git rebase origin/main && git stash pop
+        faprbma = !git fap && git rbma
         ####
         ls = ls-files
         ####
         m = merge --ff-only
         ####
         ps = push
+        psu = !git ps -u origin $(git symbolic-ref --short HEAD)
         psf = push -f
         ####
         pl = pull
@@ -52,13 +54,18 @@
         rbc = rebase --continue
         rbi = rebase --interactive
         rbs = rebase --skip
-        rbma = !git stash && git rebase origin/main && git stash pop
+        rbma = !git stash && git rebase origin/HEAD && git stash pop
         ####
-        re = reset
-        rh = reset HEAD
+        rs = reset
+        rsma = reset origin/HEAD
+        rsh = reset --hard
+        rshma = reset --hard origin/HEAD
 
 [url "ssh://git@github.com/"]
         insteadOf = https://github.com/
+
+[url "ssh://git@gitlab.com/"]
+        insteadOf = https://gitlab.com/
 
 [commit]
 	gpgsign = true
@@ -68,3 +75,5 @@
 
 [gpg]
 	program = gpg
+[pull]
+	ff = only

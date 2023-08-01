@@ -112,6 +112,7 @@
     # battery               # internal battery
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
+    aws_vault
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -1603,6 +1604,10 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+  }
+
+  function prompt_aws_vault(){
+    p10k segment -f 208 -t "$(prompt_aws_vault_segment)"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
