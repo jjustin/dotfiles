@@ -7,10 +7,9 @@ kube-score
 kubernetes-cli
 magic-wormhole
 mysql
-orbstack
 tldr
 yarn
 stern
-nvim
+neovim
 tig
-gpg
+gnupg

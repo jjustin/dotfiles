@@ -9,8 +9,11 @@ ngrok
 postman
 visual-studio-code
 drawio
-karabiner-elements
 obsidian
 spotify
 aws-vault
 rectangle
+notion
+slack
+vlc
+orbstack
