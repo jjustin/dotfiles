@@ -182,3 +182,7 @@ opatest() {
         regal lint $1
         opa test $1
 }
+
+if command -v ngrok &>/dev/null; then
+       eval "$(ngrok completion)"
+fi
