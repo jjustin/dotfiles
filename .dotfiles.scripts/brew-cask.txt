@@ -17,3 +17,4 @@ notion
 slack
 vlc
 orbstack
+signal
