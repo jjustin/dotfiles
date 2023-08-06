@@ -13,3 +13,4 @@ stern
 neovim
 tig
 gnupg
+ripgrep
