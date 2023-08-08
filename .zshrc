@@ -131,7 +131,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 compctl -g '~/.itermocil/*(:t:r)' itermocil
 alias iterm='itermocil'
-alias polarium_cognito_token_copy='echo -n $(~/3fs/polarium/services/get-token.sh) | clipcopy'
 
 # Test for OPA and lint with Regal for .rego files
 opatest() {
@@ -143,3 +142,6 @@ opatest() {
 if command -v ngrok &>/dev/null; then
         eval "$(ngrok completion)"
 fi
+
+# Private zshrc for non-pulic logic
+test -e .gitconfig.private && source ~/.zshrc.private
