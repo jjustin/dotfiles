@@ -38,10 +38,10 @@ $HOME/
 In the above example the private gitconfig would look something like:
 
 ```sh
-[includeIf "gitdir:~/personal"]
+[includeIf "gitdir:~/personal/"]
     path=~/personal/.gitconfig
 
-[includeIf "gitdir:~/company1"]
+[includeIf "gitdir:~/company1/"]
     path=~/company1/.gitconfig
 ```
 
