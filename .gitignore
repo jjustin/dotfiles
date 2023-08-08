@@ -34,3 +34,6 @@ Code
 
 # Ignore where gh stores GitHub access token
 .config/gh/hosts.yml
+
+# Ignore .private files (for example .gitconfig.private)
+**.private

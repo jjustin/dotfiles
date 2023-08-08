@@ -1,3 +1,6 @@
+[include]
+        path = .gitconfig.private
+
 [user]
 	name = Janez Justin
 
@@ -75,5 +78,6 @@
 
 [gpg]
 	program = gpg
+
 [pull]
 	ff = only

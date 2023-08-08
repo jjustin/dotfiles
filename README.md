@@ -1,14 +1,9 @@
 # Dotfiles
 
-To load dotfiles from this repo:
+To install dotfiles from this repo:
 
 ```sh
-cd $HOME
-git clone git@github.com:jjustin/dotfiles.git $HOME/.dotfiles
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
-dot checkout
-dot config --local status.showUntrackedFiles no
-dot config --local include.path <path to .gitconfig file>
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jjustin/dotfiles/main/.dotfiles.scripts/init.sh)"
 ```
 
 then use `dot` to make changes to the repo.
@@ -17,9 +12,8 @@ To get branch files locally use `dot reset --hard <branch>`
 
 ## Gitconfig
 
-`.zshrc` shadow wraps `git`. Before every git action in a repository, all
-directories from current one to `$HOME` are checked for any `.gitconfig` files.
-The first one found is linked locally linked to the git repository.
+To add per machine git config, .gitconfig.private can be used. It's automatically added by init script.
+
 
 This allows for storing "common" `.gitconfig` in this repo and reducing
 the exposure of information (that in my opinion should not be stored here).
@@ -40,4 +34,13 @@ $HOME/
 │  ├─ project1/
 │  ├─ project2/
 ...
+```
+
+In the above example the private gitconfig would look something like:
+```
+[includeIf "gitdir:~/personal"]
+    path=~/personal/.gitconfig
+
+[includeIf "gitdir:~/company1"]
+    path=~/company1/.gitconfig
 ```

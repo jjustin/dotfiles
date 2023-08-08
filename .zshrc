@@ -120,49 +120,6 @@ fi
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
-# .gitconfig linking
-git() {
-        link_gitconfig || return
-        command git "$@"
-}
-
-link_gitconfig() {
-        is_repo=$(command git rev-parse --is-inside-work-tree 2> /dev/null)
-        if [[ $is_repo != "true" ]]; then
-                return 0
-        fi
-
-        # Currently only supported for paths in $HOME
-        if [[ $(pwd) == $HOME/* ]]; then
-                search_path=$(pwd)
-                while [[ ! -z $search_path ]]; do
-                        # Found gitconfig in some parent directory
-                        if [[ -f $search_path/.gitconfig ]]; then
-                                existing=$(command git config --local --get include.path)
-                                # Check if it's not set
-                                if [[ $existing == "" ]]; then
-                                        echo "Found .gitconfig in $search_path. Linking."
-                                        command git config --local include.path "$search_path/.gitconfig"
-                                        return 0
-                                # Check if it's set to the found .gitconfig
-                                elif [[ $existing != "$search_path/.gitconfig" ]]; then
-                                        echo "Found .gitconfig in $search_path, but include.path already set to \`$existing\` in .gitconfig."
-                                        echo "If it should be overwritten, run 'command git config --unset include.path'"
-                                        return 1
-                                fi
-
-                                # already set to the found .gitconfig
-                                return 0
-                        fi
-                        # Go up one directory
-                        search_path=`/usr/bin/dirname "$search_path"`
-                done
-                echo "No .gitconfig found in any parent directory"
-        fi
-        echo "Not in home directory, not linking .gitconfig"
-        return 0
-}
-
 # Dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 
@@ -176,13 +133,13 @@ compctl -g '~/.itermocil/*(:t:r)' itermocil
 alias iterm='itermocil'
 alias polarium_cognito_token_copy='echo -n $(~/3fs/polarium/services/get-token.sh) | clipcopy'
 
-export RPROMPT='$(prompt_aws_vault_segment)'
-
+# Test for OPA and lint with Regal for .rego files
 opatest() {
         regal lint $1
         opa test $1
 }
 
+# Ngrok autocompletion
 if command -v ngrok &>/dev/null; then
-       eval "$(ngrok completion)"
+        eval "$(ngrok completion)"
 fi
