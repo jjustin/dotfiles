@@ -120,6 +120,12 @@ fi
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
+# .gitconfig linking shadow warpped around git
+git() {
+        $HOME/.link_git.sh || return
+        command git "$@"
+}
+
 # Dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 

@@ -12,7 +12,13 @@ To get branch files locally use `dot reset --hard <branch>`
 
 ## Gitconfig
 
-To add per machine git config, .gitconfig.private can be used. It's automatically added by init script.
+1. To add per machine git config or git config with personal information
+.gitconfig.private can be used. It's automatically added by init script.
+
+2. `.zshrc` shadow wraps `git`. Before every git action in a repository, all
+directories from current one to `$HOME` are checked for any `.gitconfig` files.
+The first one found is locally linked to the git repository. This is done
+in `.link_git.sh`.
 
 This allows for storing "common" `.gitconfig` in this repo and reducing
 the exposure of information (that in my opinion should not be stored here).
