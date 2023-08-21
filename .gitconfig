@@ -48,7 +48,8 @@
         ####
         ps = push
         psu = !git ps -u origin $(git symbolic-ref --short HEAD)
-        psf = push -f
+        psf = push --force-with-lease
+        psff = push --force
         ####
         pl = pull
         ####
