@@ -150,4 +150,4 @@ if command -v ngrok &>/dev/null; then
 fi
 
 # Private zshrc for non-pulic logic
-test -e .gitconfig.private && source ~/.zshrc.private
+test -e ~/.zshrc.private && source ~/.zshrc.private
