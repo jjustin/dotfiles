@@ -151,3 +151,14 @@ fi
 
 # Private zshrc for non-pulic logic
 test -e ~/.zshrc.private && source ~/.zshrc.private
+
+# Conditionally load brew based on environment
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Rossetta shell alias
+alias x8664='arch -x86_64'
+alias x8664zsh='x8664 zsh'

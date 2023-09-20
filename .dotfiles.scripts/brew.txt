@@ -15,3 +15,4 @@ tig
 gnupg
 ripgrep
 node
+wireguard-tools
