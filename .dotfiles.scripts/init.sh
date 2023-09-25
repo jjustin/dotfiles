@@ -6,7 +6,7 @@ xcode-select --install
 read -p "Press enter after code tools are installed"
 
 # Bootstrap dotfiles
-git clone git@github.com:jjustin/dotfiles.git $HOME/.dotfiles
+git clone https://github.com/jjustin/dotfiles.git $HOME/.dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 dot checkout
 dot config --local status.showUntrackedFiles no
