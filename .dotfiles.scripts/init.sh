@@ -30,4 +30,6 @@ cat << EOF > .gitconfig.private
 EOF
 
 echo "Opening private gitconfig. Edit and save it. Then continue with the rest of the scripts"
-open .gitconfig.private
+vi .gitconfig.private
+
+echo "Reload zsh!"
