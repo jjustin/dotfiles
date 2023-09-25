@@ -7,10 +7,9 @@ read -p "Press enter after code tools are installed"
 
 # Bootstrap dotfiles
 git clone https://github.com/jjustin/dotfiles.git $HOME/.dotfiles
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
-dot checkout
-dot config --local status.showUntrackedFiles no
-dot config --local include.path %HOME/.gitconfig
+git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME checkout
+git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME config --local status.showUntrackedFiles no
+git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME config --local include.path %HOME/.gitconfig
 
 cat << EOF > .zshrc.private
 # Configure private zshrc in this file
