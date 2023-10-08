@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Possible alternative for font intalling?
+# brew tap homebrew/cask-fonts
+# brew install font-meslo-lg-nerd-font
+
 install_font(){
 	curl -fsSLO --output-dir /Library/Fonts $1
 }
