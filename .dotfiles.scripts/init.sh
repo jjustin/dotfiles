@@ -47,4 +47,4 @@ EOF
 echo "Opening private gitconfig. Edit and save it. Then continue with the rest of the scripts"
 vi ~/.gitconfig.private
 
-echo "Reload zsh!"
+echo "Reload zsh and then run ~/.dotfiles.scripts/install.sh. Or install only the components you want."
