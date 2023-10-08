@@ -2,42 +2,15 @@
     "title": "Custom capslock",
     "rules": [
         {
-            "description": "Post Esc if Caps is tapped, Control if held.",
+            "description": "Post Esc if Caps is tapped, Control if held, Caps if shift is pressed.",
             "manipulators": [
                 {
                     "type": "basic",
                     "from": {
-                        "key_code": "left_control",
-                        "modifiers": {
-                            "optional": [
-                                "any"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_control",
-                            "lazy": true
-                        }
-                    ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "escape"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "description": "Change right_shift + left_shift to caps_lock",
-            "manipulators": [
-                {
-                    "type": "basic",
-                    "from": {
-                        "key_code": "left_shift",
+                        "key_code": "caps_lock",
                         "modifiers": {
                             "mandatory": [
-                                "right_shift"
+                                "shift"
                             ],
                             "optional": [
                                 "caps_lock"
@@ -53,19 +26,22 @@
                 {
                     "type": "basic",
                     "from": {
-                        "key_code": "right_shift",
+                        "key_code": "caps_lock",
                         "modifiers": {
-                            "mandatory": [
-                                "left_shift"
-                            ],
                             "optional": [
-                                "caps_lock"
+                                "any"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "key_code": "caps_lock"
+                            "key_code": "left_control",
+                            "lazy": true
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
                         }
                     ]
                 }

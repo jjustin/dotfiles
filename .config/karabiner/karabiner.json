@@ -18,41 +18,14 @@
                 },
                 "rules": [
                     {
-                        "description": "Post Esc if Caps is tapped, Control if held.",
+                        "description": "Post Esc if Caps is tapped, Control if held, Caps if shift is pressed.",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_control",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_control",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change right_shift + left_shift to caps_lock",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_shift",
+                                    "key_code": "caps_lock",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_shift"
+                                            "shift"
                                         ],
                                         "optional": [
                                             "caps_lock"
@@ -68,19 +41,22 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "right_shift",
+                                    "key_code": "caps_lock",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_shift"
-                                        ],
                                         "optional": [
-                                            "caps_lock"
+                                            "any"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "caps_lock"
+                                        "key_code": "left_control",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -148,141 +124,6 @@
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [
-                        {
-                            "from": {
-                                "key_code": "f1"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f1"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f2"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f2"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f3"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f3"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f4"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f4"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f5"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f5"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f6"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f6"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f7"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f7"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f8"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f8"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f9"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f9"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f10"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f10"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f11"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f11"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f12"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f12"
-                                }
-                            ]
-                        }
-                    ],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 45915,
-                        "vendor_id": 1133
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
                     "identifiers": {
                         "is_keyboard": true,
@@ -323,11 +164,11 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_option"
+                                "key_code": "grave_accent_and_tilde"
                             },
                             "to": [
                                 {
-                                    "key_code": "left_command"
+                                    "key_code": "non_us_backslash"
                                 }
                             ]
                         },
@@ -343,11 +184,21 @@
                         },
                         {
                             "from": {
-                                "key_code": "right_option"
+                                "key_code": "left_option"
                             },
                             "to": [
                                 {
-                                    "key_code": "right_command"
+                                    "key_code": "left_command"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_backslash"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "grave_accent_and_tilde"
                                 }
                             ]
                         },
@@ -363,21 +214,21 @@
                         },
                         {
                             "from": {
-                                "key_code": "grave_accent_and_tilde"
+                                "key_code": "right_option"
                             },
                             "to": [
                                 {
-                                    "key_code": "non_us_backslash"
+                                    "key_code": "right_command"
                                 }
                             ]
                         },
                         {
                             "from": {
-                                "key_code": "non_us_backslash"
+                                "key_code": "application"
                             },
                             "to": [
                                 {
-                                    "key_code": "grave_accent_and_tilde"
+                                    "apple_vendor_top_case_key_code": "keyboard_fn"
                                 }
                             ]
                         }
@@ -512,18 +363,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_control"
-                        }
-                    ]
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
