@@ -18,3 +18,5 @@ slack
 vlc
 orbstack
 signal
+syncthing
+
