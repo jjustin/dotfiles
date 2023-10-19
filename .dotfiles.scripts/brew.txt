@@ -7,6 +7,7 @@ kube-score
 kubernetes-cli
 magic-wormhole
 mysql
+postgresql
 tldr
 yarn
 stern
