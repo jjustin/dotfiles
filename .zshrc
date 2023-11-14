@@ -149,6 +149,9 @@ if command -v ngrok &>/dev/null; then
         eval "$(ngrok completion)"
 fi
 
+# Kubectl autocomplete
+source <(kubectl completion zsh)
+
 # Private zshrc for non-pulic logic
 test -e ~/.zshrc.private && source ~/.zshrc.private
 

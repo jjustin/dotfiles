@@ -2,7 +2,6 @@ awscli
 difftastic
 direnv
 go
-helm
 jq
 k9s
 kube-score

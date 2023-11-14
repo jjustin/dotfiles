@@ -20,3 +20,4 @@ signal
 syncthing
 firefox
 redisinsight
+dozer
