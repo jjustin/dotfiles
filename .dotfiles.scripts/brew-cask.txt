@@ -3,6 +3,7 @@ brave-browser
 beekeeper-studio
 karabiner-elements
 chromium
+discord
 hex-fiend
 ngrok
 postman
@@ -12,6 +13,7 @@ obsidian
 spotify
 aws-vault
 rectangle
+notion
 slack
 vlc
 orbstack
@@ -19,4 +21,3 @@ signal
 syncthing
 firefox
 redisinsight
-
