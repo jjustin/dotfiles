@@ -26,10 +26,11 @@
         #### Branches
         br = branch
 	brd = branch -d
-        newbr = "!f(){ git branch $1; git co $1; };f"
+        newbr = "!f(){ git checkout -b $1 origin/main; };f"
         ####
         c = commit
         ca = commit --amend
+        can = commit --amend --no-edit
         cm = commit -m
         ####
         cl = clone
@@ -47,9 +48,11 @@
         m = merge --ff-only
         ####
         ps = push
+        psc = !git ps origin $(git symbolic-ref --short HEAD)
+        psd = !git ps origin :$(git symbolic-ref --short HEAD)
         psu = !git ps -u origin $(git symbolic-ref --short HEAD)
-        psf = push --force-with-lease
-        psff = push --force
+        psf = !git ps --force-with-lease origin $(git symbolic-ref --short HEAD)
+        psff = ps --force
         ####
         pl = pull
         ####
@@ -82,3 +85,10 @@
 
 [pull]
 	ff = only
+
+[push]
+        # prevents your from accidentally pushing to a wrong branch
+        default = nothing
+
+[tag]
+        forceSignAnnotated = true
