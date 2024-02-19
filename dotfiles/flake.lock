@@ -1,0 +1,66 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1706981411,
+        "narHash": "sha256-cLbLPTL1CDmETVh4p0nQtvoF+FSEjsnJTFpTxhXywhQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "652fda4ca6dafeb090943422c34ae9145787af37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-23.11",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1707514827,
+        "narHash": "sha256-Y+wqFkvikpE1epCx57PsGw+M1hX5aY5q/xgk+ebDwxI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "20f65b86b6485decb43c5498780c223571dd56ef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "zsh-aws-vault": "zsh-aws-vault"
+      }
+    },
+    "zsh-aws-vault": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1675219692,
+        "narHash": "sha256-c2ncDAC9UKEX2QWW58CePSO1aCl8fgj4Slba+W71fnU=",
+        "owner": "blimmer",
+        "repo": "zsh-aws-vault",
+        "rev": "7b1c238daa24f1b001e39d8a0654d6ffde4cc404",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blimmer",
+        "repo": "zsh-aws-vault",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
