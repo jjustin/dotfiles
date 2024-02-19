@@ -21,3 +21,4 @@ syncthing
 firefox
 redisinsight
 dozer
+screen-studio

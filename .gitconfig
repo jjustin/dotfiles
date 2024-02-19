@@ -22,11 +22,12 @@
 
 [alias]
         a = add
+        au = add -u
         aa = add --all
         #### Branches
         br = branch
 	brd = branch -d
-        newbr = "!f(){ git checkout -b $1 origin/main; };f"
+        newbr = "!f(){ git checkout -b $1 origin/HEAD; };f"
         ####
         c = commit
         ca = commit --amend
@@ -92,3 +93,6 @@
 
 [tag]
         forceSignAnnotated = true
+
+[branch]
+	sort = -committerdate
