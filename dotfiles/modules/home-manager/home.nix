@@ -48,9 +48,9 @@
         }
       ];
 
-      initExtra = ''
+      initExtra = let p10kConfig = ./p10k.zsh; in ''
         # p10k
-        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        [[ ! -f ${p10kConfig} ]] || source ${p10kConfig}
 
         # kubectl
         source <(kubectl completion zsh)
@@ -181,12 +181,11 @@
         gruvbox-material
         mini-nvim
       ];
+      extraConfig = ''
+        syntax on
+        set spell spelllang=en_us
+        autocmd Filetype gitcommit set textwidth=72
+      '';
     };
-
-    extraConfig = ''
-      syntax on
-      set spell spelllang=en_us
-      autocmd Filetype gitcommit set textwidth=72
-    '';
   };
 }
