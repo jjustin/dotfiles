@@ -27,6 +27,5 @@ in {
             LINK: ${cfg.device}
       '';
     };
-
   };
 }

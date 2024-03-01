@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       # The `follows` keyword in inputs is used for inheritance.
@@ -16,39 +20,45 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations =
-      let
-        getConfiguration = conf: {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
+    let
+      private = import ./private/private.nix;
+      getConfiguration = { home-manager-modules, system, conf }: {
+        system = system;
+        specialArgs = { inherit inputs; };
 
-          modules = [
-            conf
-            ./variables.nix
+        modules = [
+          conf
+          ./variables.nix
 
+          home-manager-modules.home-manager
+          ({ config, lib, ... }: {
+            # Enable Flakes and the new command-line tool
+            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+            nixpkgs.overlays = import ./overlays/overlays.nix;
+
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (lib.getName pkg) config.myvars.unfreePackages;
+
+            # Configure home manager
+            home-manager.extraSpecialArgs = { inherit inputs private; myvars = config.myvars; };
+
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.${config.myvars.user.username} = import ./modules/home-manager/home.nix;
+          })
+        ] ++ {
+          "x86_64-linux" = [
+            ./modules/nixos/caps2esc.nix
             ./modules/nixos/localization.nix
             ./modules/nixos/networking.nix
             ./modules/nixos/obsidian.nix
-            ./modules/nixos/users.nix
-            ./modules/nixos/caps2esc.nix
             ./modules/nixos/plex.nix
             ./modules/nixos/udev.nix
-
-            home-manager.nixosModules.home-manager
-            ({ config, ... }: {
-              # Configure home manager
-              home-manager.extraSpecialArgs = { inherit inputs; };
-
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.users.${config.myvars.user.username} = import ./modules/home-manager/home.nix;
-            })
+            ./modules/nixos/users.nix
             {
-              # Enable Flakes and the new command-line tool
-              nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
               # This value determines the NixOS release from which the default
               # settings for stateful data, like file locations and database versions
               # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -58,10 +68,42 @@
               system.stateVersion = "23.11"; # Did you read the comment?
             }
           ];
-        };
-      in
-      {
-        "pinnochio" = nixpkgs.lib.nixosSystem (getConfiguration ./hosts/pinnochio.nix);
+
+          "aarch64-darwin" = [
+            ./modules/darwin/caps2esc.nix
+            ({
+              myvars.user.homeDirectory = "/Users/jjustin";
+              system.stateVersion = 4;
+            })
+          ];
+        }.${system};
       };
-  };
+    in
+    {
+      nixosConfigurations =
+        {
+          "pinnochio" = nixpkgs.lib.nixosSystem (
+            getConfiguration {
+              home-manager-modules = home-manager.nixosModules;
+              system = "x86_64-linux";
+              conf = ./hosts/pinnochio.nix;
+            }
+          );
+        };
+
+      darwinConfigurations =
+        {
+          "maccree" = nix-darwin.lib.darwinSystem
+            (
+              getConfiguration {
+                home-manager-modules = home-manager.darwinModules;
+                system = "aarch64-darwin";
+                conf = ./hosts/maccree.nix;
+              }
+            );
+
+          # Expose the package set, including overlays, for convenience.
+          darwinPackages = self.darwinConfigurations."maccree".pkgs;
+        };
+    };
 }

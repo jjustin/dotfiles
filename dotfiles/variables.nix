@@ -14,6 +14,11 @@ with lib;
         default = "jjustin";
       };
 
+      homeDirectory = mkOption {
+        type = types.str;
+        default = "/home/jjustin";
+      };
+
       fullName = mkOption {
         type = types.str;
         default = "Janez Justin";

@@ -39,9 +39,6 @@
       ("steam-run")
     ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) config.myvars.unfreePackages;
-
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
@@ -91,6 +88,19 @@
   ];
 
   environment.variables.EDITOR = "nvim";
+
+  environment.systemPackages = with pkgs; [
+    firefox
+    qbittorrent
+    gnome.gnome-disk-utility
+    gnome.gnome-calculator
+    chiaki # ps5 streaming
+    signal-desktop
+    brave
+
+    usbutils # lsusb
+    wineWowPackages.stable
+  ];
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [

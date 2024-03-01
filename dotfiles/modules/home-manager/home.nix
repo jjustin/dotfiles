@@ -1,43 +1,12 @@
-{ config, lib, pkgs, nixpkgs, inputs, ... }:
+{ config, lib, pkgs, nixpkgs, inputs, myvars, private, ... }:
 
 # https://nix-community.github.io/home-manager/options.xhtml
 
 {
   programs.home-manager.enable = true;
 
-  # home.username = config.myvars.user.username;
-  # home.homeDirectory = "/home/${config.home.username}";
-
-  home.username = "jjustin";
-  home.homeDirectory = "/home/jjustin";
-
-  home.packages = with pkgs; [
-    firefox
-    obsidian
-    signal-desktop
-    spotify
-    discord
-    brave
-    vscode
-    qbittorrent
-
-    neovim
-    wget
-    rustup
-    gcc
-    git
-    htop
-    nil # nix LSP
-    neofetch
-    nixpkgs-fmt
-
-    usbutils # lsusb
-    gnome.gnome-disk-utility
-    gnome.gnome-calculator
-    chiaki # ps5 streaming
-
-    wineWowPackages.stable
-  ];
+  home.username = myvars.user.username;
+  home.homeDirectory = myvars.user.homeDirectory;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -53,6 +22,10 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
+    };
+
+    direnv = {
+      enable = true;
     };
 
     zsh = {
@@ -76,7 +49,17 @@
       ];
 
       initExtra = ''
-        source ~/.p10k.zsh
+        # p10k
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+        # kubectl
+        source <(kubectl completion zsh)
+
+        # Nix
+        if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+        fi
+        # End Nix
       '';
 
       oh-my-zsh = {
@@ -87,6 +70,100 @@
           "z"
         ];
       };
+    };
+
+    git = {
+      enable = true;
+      aliases = {
+        a = "add";
+        au = "add -u";
+        aa = "add --all Branches";
+        br = "branch";
+        brd = "branch -d";
+        newbr = "!f(){ git checkout -b $1 origin/HEAD; };f";
+        c = "commit";
+        ca = "commit --amend";
+        can = "commit --amend --no-edit";
+        cm = "commit -m";
+        cl = "clone";
+        co = "checkout";
+        d = "diff";
+        f = "fetch";
+        fap = "fetch --all --prune";
+        faprbma = "!git fap && git rbma";
+        ls = "ls-files";
+        m = "merge --ff-only";
+        ps = "push";
+        psc = "!git ps origin $(git symbolic-ref --short HEAD)";
+        psd = "!git ps origin :$(git symbolic-ref --short HEAD)";
+        psu = "!git ps -u origin $(git symbolic-ref --short HEAD)";
+        psf = "!git ps --force-with-lease origin $(git symbolic-ref --short HEAD)";
+        psff = "ps --force";
+        pl = "pull";
+        rb = "rebase";
+        rba = "rebase --abort";
+        rbc = "rebase --continue";
+        rbi = "rebase --interactive";
+        rbs = "rebase --skip";
+        rbma = "!git stash && git rebase origin/HEAD && git stash pop";
+        rs = "reset";
+        rsma = "reset origin/HEAD";
+        rsh = "reset --hard";
+        rshma = "reset --hard origin/HEAD";
+        st = "status";
+        sts = "status --short";
+      };
+
+      userName = myvars.user.fullName;
+
+      includes =
+        let
+          includeConfig = private.gitIncludes;
+        in
+        map
+          (key:
+            {
+              contents = includeConfig.${key} // { meta."is${key}" = true; };
+              contentSuffix = "gitconfig_" + key;
+              condition = "gitdir:~/${key}/";
+            }
+          )
+          (builtins.attrNames includeConfig);
+
+
+      extraConfig = {
+        init.defaultBranch = "main";
+
+        core.editor = "nvim";
+        web.browser = "brave";
+
+        color = {
+          branch = {
+            current = "yellow bold";
+            local = "green bold";
+            remote = "cyan bold";
+          };
+
+          status = {
+            added = "green bold";
+            changed = "yellow bold";
+            untracked = "red bold";
+          };
+        };
+
+        url = {
+          "ssh://git@github.com/".insteadOf = "https://github.com/";
+          "ssh://git@gitlab.com/".insteadOf = "https://gitlab.com/";
+        };
+
+        branch.sort = "-commiterdate";
+        commit.gpgsign = true;
+        pull.ff = "only";
+        push.deafult = "nothing"; # Prevents from accidentally pushing to a wrong branch
+        tag.forceSignAnnotated = true;
+      };
+
+      difftastic.enable = true;
     };
   };
 }
