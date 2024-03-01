@@ -30,6 +30,8 @@
         modules = [
           conf
           ./variables.nix
+          ./modules/common/programs.nix
+          ./modules/common/packages.nix
 
           home-manager-modules.home-manager
           ({ config, lib, ... }: {

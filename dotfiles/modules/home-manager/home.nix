@@ -125,7 +125,9 @@
             {
               contents = includeConfig.${key} // { meta."is${key}" = true; };
               contentSuffix = "gitconfig_" + key;
-              condition = "gitdir:~/${key}/";
+              condition =
+                let path = "~/${key}" + (if key == "" then "" else "/");
+                in "gitdir:${path}";
             }
           )
           (builtins.attrNames includeConfig);
