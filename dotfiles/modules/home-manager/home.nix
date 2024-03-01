@@ -167,5 +167,26 @@
 
       difftastic.enable = true;
     };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      plugins = with pkgs.vimPlugins; [
+        nvim-lspconfig
+        nvim-treesitter.withAllGrammars
+        plenary-nvim
+        gruvbox-material
+        mini-nvim
+      ];
+    };
+
+    extraConfig = ''
+      syntax on
+      set spell spelllang=en_us
+      autocmd Filetype gitcommit set textwidth=72
+    '';
   };
 }
