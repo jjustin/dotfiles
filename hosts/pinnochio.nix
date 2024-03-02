@@ -95,6 +95,7 @@
     signal-desktop
     spotify
     vscode
+    vlc
 
     usbutils # lsusb
     wineWowPackages.stable
