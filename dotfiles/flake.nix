@@ -89,6 +89,7 @@
 
           "aarch64-darwin" = [
             inputs.nix-homebrew.darwinModules.nix-homebrew
+            ./modules/darwin/iterm2/default.nix
             ./modules/darwin/caps2esc.nix
             ./modules/darwin/homebrew.nix
             ({
