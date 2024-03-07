@@ -158,7 +158,7 @@
           "ssh://git@gitlab.com/".insteadOf = "https://gitlab.com/";
         };
 
-        branch.sort = "-commiterdate";
+        branch.sort = "-committerdate";
         commit.gpgsign = true;
         pull.ff = "only";
         push.deafult = "nothing"; # Prevents from accidentally pushing to a wrong branch
