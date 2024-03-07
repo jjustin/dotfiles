@@ -6,6 +6,7 @@
     ];
 
   environment.systemPackages = with pkgs;[
+    aws-vault
     cloudflared
     direnv
     gcc

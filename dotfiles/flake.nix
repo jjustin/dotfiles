@@ -14,6 +14,21 @@
       # to avoid problems caused by different versions of nixpkgs dependencies.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+
     zsh-aws-vault = {
       url = "github:blimmer/zsh-aws-vault";
       flake = false;
@@ -30,6 +45,7 @@
         modules = [
           conf
           ./variables.nix
+          ./modules/common/misc.nix
           ./modules/common/programs.nix
           ./modules/common/packages.nix
 
@@ -72,7 +88,9 @@
           ];
 
           "aarch64-darwin" = [
+            inputs.nix-homebrew.darwinModules.nix-homebrew
             ./modules/darwin/caps2esc.nix
+            ./modules/darwin/homebrew.nix
             ({
               myvars.user.homeDirectory = "/Users/jjustin";
               system.stateVersion = 4;

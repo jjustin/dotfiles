@@ -83,20 +83,18 @@
   programs.zsh.enable = true;
   programs.dconf.enable = true;
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
-
-  environment.variables.EDITOR = "nvim";
-
   environment.systemPackages = with pkgs; [
-    firefox
-    qbittorrent
-    gnome.gnome-disk-utility
-    gnome.gnome-calculator
-    chiaki # ps5 streaming
-    signal-desktop
     brave
+    chiaki # ps5 streaming
+    discord
+    firefox
+    gnome.gnome-calculator
+    gnome.gnome-disk-utility
+    obsidian
+    qbittorrent
+    signal-desktop
+    spotify
+    vscode
 
     usbutils # lsusb
     wineWowPackages.stable
