@@ -11,18 +11,20 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    system.activationScripts.keyboard.text =
-      let
-        mapping = [
+    system.keyboard =
+      {
+        enableKeyMapping = true;
+        nonUS.remapTilde = true;
+        userKeyMapping = [
           {
             HIDKeyboardModifierMappingSrc = 30064771129; # caps
             HIDKeyboardModifierMappingDst = 30064771113; # esc
           }
+          {
+            HIDKeyboardModifierMappingSrc = 30064771113; # esc
+            HIDKeyboardModifierMappingDst = 30064771129; # caps
+          }
         ];
-      in
-      ''
-        echo "remapping keys..." >&2
-        hidutil property --set '{"UserKeyMapping":${builtins.toJSON mapping}}' > /dev/null
-      '';
+      };
   };
 }
