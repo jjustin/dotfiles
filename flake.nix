@@ -92,6 +92,7 @@
             ./modules/darwin/iterm2/default.nix
             ./modules/darwin/caps2esc.nix
             ./modules/darwin/homebrew.nix
+            ./modules/darwin/packages.nix
             ./modules/darwin/system.nix
             ({
               myvars.user.homeDirectory = "/Users/jjustin";
