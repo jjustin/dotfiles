@@ -15,16 +15,7 @@ in {
       {
         enableKeyMapping = true;
         nonUS.remapTilde = true;
-        userKeyMapping = [
-          {
-            HIDKeyboardModifierMappingSrc = 30064771129; # caps
-            HIDKeyboardModifierMappingDst = 30064771113; # esc
-          }
-          {
-            HIDKeyboardModifierMappingSrc = 30064771113; # esc
-            HIDKeyboardModifierMappingDst = 30064771129; # caps
-          }
-        ];
+        remapCapsLockToEscape = true;
       };
   };
 }

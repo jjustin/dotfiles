@@ -21,6 +21,7 @@
     neovim
     ngrok
     nil # nix LSP
+    nodejs_20
     nixpkgs-fmt
     postgresql
     rustup
