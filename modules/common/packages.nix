@@ -26,6 +26,7 @@
     postgresql
     rustup
     sshuttle
+    tcpdump
     tig
     wget
   ];
