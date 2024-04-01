@@ -10,6 +10,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.device = "/dev/nvme0";
 
   my.networking.hostName = "steve";
 
@@ -18,7 +19,10 @@
     confirmUnfree = true;
   };
 
-  my.services.ssh.enable = true;
+  my.services.ssh = {
+    enable = true;
+    enableRootKeyLogin = true;
+  };
 
   programs.zsh.enable = true;
 
