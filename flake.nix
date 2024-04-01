@@ -113,6 +113,13 @@
               conf = ./hosts/pinnochio.nix;
             }
           );
+          "steve" = nixpkgs.lib.nixosSystem (
+            getConfiguration {
+              home-manager-modules = home-manager.nixosModules;
+              system = "x86_64-linux";
+              conf = ./hosts/steve.nix;
+            }
+          );
         };
 
       darwinConfigurations =

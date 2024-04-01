@@ -13,11 +13,6 @@
 
   my.networking.hostName = "pinnochio";
 
-  my.services.plex = {
-    enable = true;
-    confirmUnfree = true;
-  };
-
   my.obsidian = {
     enable = true;
     confirmUnfree = true;
@@ -85,7 +80,6 @@
 
   environment.systemPackages = with pkgs; [
     brave
-    chiaki # ps5 streaming
     discord
     firefox
     gnome.gnome-calculator
@@ -100,16 +94,4 @@
     usbutils # lsusb
     wineWowPackages.stable
   ];
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    987 # chiaki
-    9295 # chiaki
-  ];
-  networking.firewall.allowedUDPPorts = [
-    987 # chiaki
-    9295 # chiaki
-  ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 }
