@@ -12,5 +12,6 @@
     extraGroups = [ "networkmanager" "wheel" "storage" ];
     uid = 1000;
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = config.myvars.user.sshAuthorizedKeys;
   };
 }

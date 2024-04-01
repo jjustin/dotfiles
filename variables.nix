@@ -8,6 +8,14 @@ with lib;
       default = [ ];
     };
 
+    sshKey = mkOption {
+      type = types.str;
+      default = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF26m0pW5B2Y9vUPEx0qqO8CJEyTURaLLFom0ggWjnpq";
+      description = ''
+        SSH key to use by default.
+      '';
+    };
+
     user = {
       username = mkOption {
         type = types.str;
@@ -23,6 +31,12 @@ with lib;
         type = types.str;
         default = "Janez Justin";
       };
+
+      sshAuthorizedKeys = mkOption
+        {
+          type = types.listOf types.str;
+          default = [ ];
+        };
     };
   };
 }
