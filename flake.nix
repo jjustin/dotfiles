@@ -74,6 +74,7 @@
             ./modules/nixos/networking.nix
             ./modules/nixos/obsidian.nix
             ./modules/nixos/plex.nix
+            ./modules/nixos/qbittorrent.nix
             ./modules/nixos/ssh.nix
             ./modules/nixos/udev.nix
             ./modules/nixos/users.nix

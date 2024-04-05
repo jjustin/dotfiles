@@ -23,6 +23,11 @@
     confirmUnfree = true;
   };
 
+  my.services.qbittorrent = {
+    enable = true;
+    openFirewall = true;
+  };
+
   my.services.ssh = {
     enable = true;
     enableRootKeyLogin = true;
