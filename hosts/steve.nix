@@ -12,7 +12,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0";
 
-  my.networking.hostName = "steve";
+  my.networking = {
+    hostName = "steve";
+    enableWakeOnLAN = true;
+    wakeOnLanInterface = "enp5s0";
+  };
 
   my.services.plex = {
     enable = true;
