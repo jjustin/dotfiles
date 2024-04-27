@@ -24,6 +24,7 @@
     nodejs_20
     nixpkgs-fmt
     postgresql
+    python3
     rustup
     sshuttle
     tcpdump
