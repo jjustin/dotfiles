@@ -51,5 +51,6 @@
       "vlc"
     ];
     onActivation.cleanup = "uninstall";
+    taps = builtins.attrNames config.nix-homebrew.taps;
   };
 }
