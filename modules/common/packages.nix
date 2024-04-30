@@ -13,6 +13,7 @@
     git
     go_1_22
     gnupg
+    hadolint # docker lint
     htop
     jq
     k9s
