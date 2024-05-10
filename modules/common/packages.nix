@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, inputs, ... }: {
 
   myvars.unfreePackages =
     [
@@ -31,5 +31,15 @@
     tcpdump
     tig
     wget
+
+    (pkgs.rustPlatform.buildRustPackage rec {
+      pname = "gitlab-ci-ls";
+      version = inputs.gitlab-ci-ls.rev;
+      src = inputs.gitlab-ci-ls;
+      cargoLock.lockFile = src + /Cargo.lock;
+      buildInputs = [ ] ++ lib.optionals stdenv.isDarwin [
+        darwin.apple_sdk.frameworks.SystemConfiguration
+      ];
+    })
   ];
 }

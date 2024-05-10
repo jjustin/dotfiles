@@ -166,6 +166,22 @@
         "type": "github"
       }
     },
+    "gitlab-ci-ls": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715250108,
+        "narHash": "sha256-SzO9Si2T7cPwIS2g266goh1lWQ9bASnrwc/91iNYRvg=",
+        "owner": "alesbrelih",
+        "repo": "gitlab-ci-ls",
+        "rev": "6767d7513d782bf476c50a6630f73ab1fcb89bdd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alesbrelih",
+        "repo": "gitlab-ci-ls",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -356,6 +372,7 @@
     },
     "root": {
       "inputs": {
+        "gitlab-ci-ls": "gitlab-ci-ls",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
