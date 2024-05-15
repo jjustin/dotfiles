@@ -18,6 +18,7 @@
     jq
     k9s
     kubectl
+    minio-client
     neofetch
     neovim
     ngrok
