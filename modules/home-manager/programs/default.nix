@@ -85,6 +85,7 @@
         psu = "!git ps -u origin $(git symbolic-ref --short HEAD)";
         psf = "!git ps --force-with-lease origin $(git symbolic-ref --short HEAD)";
         psff = "ps --force";
+        pst = "ps --tags";
         pl = "pull";
         rb = "rebase";
         rba = "rebase --abort";
