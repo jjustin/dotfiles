@@ -23,6 +23,7 @@
           "/Applications/Slack.app"
           "/Applications/Discord.app"
           "/Applications/Signal.app"
+          "/Applications/Spotify.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/System Settings.app"
         ];
