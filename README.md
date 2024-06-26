@@ -26,5 +26,11 @@ sudo nixos-rebuild switch --flake path:///path/to/flake#pinnochio
 or
 
 ```sh
+nixos-rebuild switch --flake path:///path/to/flake#steve --target-host root@<steve host ip>
+```
+
+or
+
+```sh
 darwin-rebuild switch --flake path:///path/to/flake#maccree
 ```
