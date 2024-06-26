@@ -22,5 +22,16 @@ in {
     networking.networkmanager.enable = true;
 
     networking.interfaces.${cfg.wakeOnLanInterface}.wakeOnLan.enable = cfg.enableWakeOnLAN;
+
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      hostName = cfg.hostName;
+      publish = {
+        enable = true;
+        addresses = true;
+        workstation = true;
+      };
+    };
   };
 }
