@@ -38,8 +38,13 @@
       version = inputs.gitlab-ci-ls.rev;
       src = inputs.gitlab-ci-ls;
       cargoLock.lockFile = src + /Cargo.lock;
+      nativeBuildInputs = [ ] ++ lib.optionals stdenv.isLinux [
+        pkg-config
+      ];
       buildInputs = [ ] ++ lib.optionals stdenv.isDarwin [
         darwin.apple_sdk.frameworks.SystemConfiguration
+      ] ++ lib.optionals stdenv.isLinux [
+        openssl
       ];
     })
   ];
