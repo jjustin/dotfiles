@@ -23,6 +23,13 @@ in {
 
     networking.interfaces.${cfg.wakeOnLanInterface}.wakeOnLan.enable = cfg.enableWakeOnLAN;
 
+    # use resolved for hostname resolution
+    services.resolved.enable = true;
+
+    # enable mdns resolution for resolved on all connections
+    # see https://man.archlinux.org/man/NetworkManager.conf.5#CONNECTION_SECTION
+    networking.networkmanager.connectionConfig."connection.mdns" = 2;
+
     services.avahi = {
       enable = true;
       nssmdns4 = true;
