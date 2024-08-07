@@ -15,6 +15,7 @@
     gnupg
     hadolint # docker lint
     htop
+    httpie
     jq
     k9s
     kubectl
@@ -32,6 +33,8 @@
     tcpdump
     tig
     wget
+
+    python312Packages.requests
 
     (pkgs.rustPlatform.buildRustPackage rec {
       pname = "gitlab-ci-ls";
