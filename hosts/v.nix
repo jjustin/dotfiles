@@ -4,14 +4,19 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./pinnochio-hardware.nix
+      ./v-hardware.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  my.networking.hostName = "pinnochio";
+  my.networking.hostName = "v";
+
+  my.nvidia = {
+    enable = true;
+    confirmUnfree = true;
+  };
 
   my.obsidian = {
     enable = true;
@@ -79,6 +84,8 @@
 
   environment.systemPackages = with pkgs; [
     brave
+    # https://nixos.wiki/wiki/Discord#Screensharing_with_audio_on_wayland
+    vesktop
     discord
     firefox
     gnome.gnome-calculator

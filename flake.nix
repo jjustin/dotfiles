@@ -91,6 +91,7 @@
           "x86_64-linux" = [
             ./modules/nixos/caps2esc.nix
             ./modules/nixos/localization.nix
+            ./modules/nixos/nvidia.nix
             ./modules/nixos/networking.nix
             ./modules/nixos/obsidian.nix
             ./modules/nixos/plex.nix
@@ -132,6 +133,13 @@
               home-manager-modules = home-manager.nixosModules;
               system = "x86_64-linux";
               conf = ./hosts/pinnochio.nix;
+            }
+          );
+          "v" = nixpkgs.lib.nixosSystem (
+            getConfiguration {
+              home-manager-modules = home-manager.nixosModules;
+              system = "x86_64-linux";
+              conf = ./hosts/v.nix;
             }
           );
           "steve" = nixpkgs.lib.nixosSystem (
