@@ -7,6 +7,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       # The `follows` keyword in inputs is used for inheritance.
@@ -148,6 +152,13 @@
               system = "x86_64-linux";
               conf = ./hosts/steve.nix;
             }
+          );
+          "kratos" = nixpkgs.lib.nixosSystem (
+            getConfiguration {
+              home-manager-modules = home-manager.nixosModules;
+              system = "x86_64-linux";
+              conf = ./hosts/kratos.nix;
+             }
           );
         };
 
