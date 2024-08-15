@@ -26,7 +26,10 @@ sudo nixos-rebuild switch --flake path:///path/to/flake#pinnochio
 or
 
 ```sh
-nixos-rebuild switch --flake path:///path/to/flake#steve --target-host root@<steve host ip>
+cd dotfiles
+scp -r . jjustin@<pinnochio host ip>:/home/jjustin/dotfiles
+ssh jjustin@<pinnochio host ip>
+nixos-rebuild switch --flake path:///home/jjustin/dotfiles#pinnochio
 ```
 
 or

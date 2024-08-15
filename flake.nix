@@ -91,8 +91,7 @@
 
             home-manager.users.${config.myvars.user.username} = import ./modules/home-manager/home.nix;
           })
-        ] ++ {
-          "x86_64-linux" = [
+        ] ++ ( let linuxModules = [
             ./modules/nixos/caps2esc.nix
             ./modules/nixos/localization.nix
             ./modules/nixos/nvidia.nix
@@ -112,7 +111,9 @@
               # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
               system.stateVersion = "23.11"; # Did you read the comment?
             }
-          ];
+          ]; in {
+	  "x86_64-linux" = linuxModules;
+	  "aarch64-linux" = linuxModules;
 
           "aarch64-darwin" = [
             inputs.nix-homebrew.darwinModules.nix-homebrew
@@ -126,7 +127,7 @@
               system.stateVersion = 4;
             })
           ];
-        }.${system};
+        }).${system};
       };
     in
     {
@@ -135,7 +136,7 @@
           "pinnochio" = nixpkgs.lib.nixosSystem (
             getConfiguration {
               home-manager-modules = home-manager.nixosModules;
-              system = "x86_64-linux";
+              system = "aarch64-linux";
               conf = ./hosts/pinnochio.nix;
             }
           );
