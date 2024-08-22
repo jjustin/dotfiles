@@ -29,6 +29,10 @@
   myvars.user.sshAuthorizedKeys = [
     config.myvars.sshKey
   ];
+
+  my.services.postgres = {
+    enable = true;
+  };
 }
 
 
