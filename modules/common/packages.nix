@@ -7,6 +7,7 @@
 
   environment.systemPackages = with pkgs;[
     aws-vault
+    awscli2
     cloudflared
     direnv
     gcc
@@ -17,6 +18,8 @@
     htop
     httpie
     jq
+    jwt-cli
+    k6
     k9s
     kubectl
     minio-client
@@ -33,8 +36,7 @@
     tcpdump
     tig
     wget
-
-    python312Packages.requests
+    watch
 
     (pkgs.rustPlatform.buildRustPackage rec {
       pname = "gitlab-ci-ls";
