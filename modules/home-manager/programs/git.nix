@@ -14,6 +14,10 @@
       cm = "commit -m";
       cl = "clone";
       co = "checkout";
+      cp = "cherry-pick";
+      cpa = "cherry-pick --abort";
+      cpc = "cherry-pick --continue";
+      cps = "cherry-pick --skip";
       d = "diff";
       f = "fetch";
       fap = "fetch --all --prune";
