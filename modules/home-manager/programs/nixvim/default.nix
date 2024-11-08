@@ -21,9 +21,9 @@
         lsp = {
           enable = true;
           servers = {
-            tsserver.enable = true;
-            lua-ls.enable = true;
-            rust-analyzer = {
+            ts_ls.enable = true;
+            lua_ls.enable = true;
+            rust_analyzer = {
               enable = true;
               installRustc = false;
               installCargo = false;
@@ -54,6 +54,7 @@
         };
 
         telescope.enable = true;
+        web-devicons.enable = true; # Needed by telescope
         oil.enable = true;
         treesitter.enable = true;
       };

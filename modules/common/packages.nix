@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }: {
+{ pkgs, lib, ... }: {
 
   myvars.unfreePackages =
     [
@@ -12,7 +12,9 @@
     direnv
     gcc
     git
+    gitlab-ci-ls
     go_1_22
+    go-task #taskfile
     gnupg
     hadolint # docker lint
     htop
@@ -37,20 +39,5 @@
     tig
     wget
     watch
-
-    (pkgs.rustPlatform.buildRustPackage rec {
-      pname = "gitlab-ci-ls";
-      version = inputs.gitlab-ci-ls.rev;
-      src = inputs.gitlab-ci-ls;
-      cargoLock.lockFile = src + /Cargo.lock;
-      nativeBuildInputs = [ ] ++ lib.optionals stdenv.isLinux [
-        pkg-config
-      ];
-      buildInputs = [ ] ++ lib.optionals stdenv.isDarwin [
-        darwin.apple_sdk.frameworks.SystemConfiguration
-      ] ++ lib.optionals stdenv.isLinux [
-        openssl
-      ];
-    })
   ];
 }

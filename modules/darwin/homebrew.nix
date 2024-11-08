@@ -27,7 +27,6 @@
   homebrew = {
     enable = true;
     casks = [
-      "alt-tab"
       "beekeeper-studio"
       "brave-browser"
       "chromium"

@@ -48,11 +48,6 @@
       flake = false;
     };
 
-    gitlab-ci-ls = {
-      url = "github:alesbrelih/gitlab-ci-ls";
-      flake = false;
-    };
-
     zsh-aws-vault = {
       url = "github:blimmer/zsh-aws-vault";
       flake = false;
