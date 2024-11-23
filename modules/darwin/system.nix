@@ -1,10 +1,12 @@
-{ ... }:
+{ lib, config, ... }:
 {
   system = {
     defaults = {
       NSGlobalDomain."com.apple.keyboard.fnState" = true; # use f1, f2,... as f keys
       NSGlobalDomain."com.apple.sound.beep.feedback" = 1; # beep when adjusting sound
       NSGlobalDomain."com.apple.swipescrolldirection" = false; # no natural scrolling
+      ".GlobalPreferences"."com.apple.mouse.scaling" = 0.875; # Set tracking speed
+      CustomSystemPreferences.NSGlobalDomain."com.apple.mouse.linear" = true; # Disable pointer acceleration, this once can probably be moved to built-in property (like the aboves): https://github.com/LnL7/nix-darwin/pull/1037
 
       dock = {
         show-recents = false;
@@ -20,7 +22,9 @@
           "/Applications/Visual Studio Code.app"
           "/Applications/iTerm.app"
           "/Applications/Obsidian.app"
+        ]++ (lib.optionals config.myvars.host.work [
           "/Applications/Slack.app"
+        ]) ++ [
           "/Applications/Discord.app"
           "/Applications/Signal.app"
           "/Applications/Spotify.app"

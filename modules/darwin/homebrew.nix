@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
   ## This handles the installation of homebrew itself and configures the taps. 
   ## Actual packages/casks installation is done later on in `homebrew.<...>`
@@ -48,6 +48,8 @@
       "syncthing"
       "visual-studio-code"
       "vlc"
+    ] ++ lib.optionals config.myvars.host.personal [
+      "qbittorrent"
     ];
     onActivation.cleanup = "uninstall";
     taps = builtins.attrNames config.nix-homebrew.taps;

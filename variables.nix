@@ -38,5 +38,10 @@ with lib;
           default = [ ];
         };
     };
+
+    host = {
+      personal = mkEnableOption "configuration option marking the host as personal";
+      work = mkEnableOption "configuration option marking the host as work";
+    };
   };
 }

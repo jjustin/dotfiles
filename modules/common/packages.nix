@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, config, ... }: {
 
   myvars.unfreePackages =
     [
@@ -8,7 +8,6 @@
   environment.systemPackages = with pkgs;[
     aws-vault
     awscli2
-    cloudflared
     direnv
     gcc
     git
@@ -39,5 +38,7 @@
     tig
     wget
     watch
+  ] ++ lib.optionals config.myvars.host.personal [
+    rar
   ];
 }

@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
-  environment.systemPackages = with pkgs;[
-    cloudflared
+  environment.systemPackages = lib.mkIf config.myvars.host.work [
+    pkgs.cloudflared
   ];
 }

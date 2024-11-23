@@ -169,6 +169,15 @@
               }
             );
 
+          "arthur" = nix-darwin.lib.darwinSystem
+            (
+              getConfiguration {
+                home-manager-modules = home-manager.darwinModules;
+                system = "aarch64-darwin";
+                conf = ./hosts/arthur.nix;
+              }
+            );
+
           # Expose the package set, including overlays, for convenience.
           darwinPackages = self.darwinConfigurations."maccree".pkgs;
         };
