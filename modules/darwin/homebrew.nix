@@ -34,7 +34,6 @@
       "drawio"
       "firefox"
       "hex-fiend"
-      "insomnia"
       "iterm2"
       "obsidian"
       "orbstack"
@@ -43,13 +42,17 @@
       "redisinsight"
       "screen-studio"
       "signal"
-      "slack"
       "spotify"
       "syncthing"
       "visual-studio-code"
       "vlc"
+    ] ++ lib.optionals config.myvars.host.work [
+      "insomnia"
+      "slack"
     ] ++ lib.optionals config.myvars.host.personal [
       "qbittorrent"
+      "calibre"
+      "whisky"
     ];
     onActivation.cleanup = "uninstall";
     taps = builtins.attrNames config.nix-homebrew.taps;

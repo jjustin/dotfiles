@@ -1,4 +1,8 @@
 { lib, config, ... }:
+let
+  ifPersonal = application: lib.optional config.myvars.host.personal application;
+  ifWork = application: lib.optional config.myvars.host.work application;
+in
 {
   system = {
     defaults = {
@@ -17,19 +21,20 @@
         launchanim = false;
         magnification = false;
         orientation = "left";
-        persistent-apps = [
+        # Flatten because ifWork and ifPersonal produce a list
+        persistent-apps = lib.lists.flatten [
           "/Applications/Brave Browser.app"
           "/Applications/Visual Studio Code.app"
           "/Applications/iTerm.app"
           "/Applications/Obsidian.app"
-        ]++ (lib.optionals config.myvars.host.work [
-          "/Applications/Slack.app"
-        ]) ++ [
+          (ifWork "/Applications/Slack.app")
           "/Applications/Discord.app"
           "/Applications/Signal.app"
           "/Applications/Spotify.app"
           "/System/Applications/Calendar.app"
+          (ifPersonal "/System/Applications/Photos.app")
           "/System/Applications/System Settings.app"
+          (ifPersonal "/Applications/Whisky.app")
         ];
       };
 
