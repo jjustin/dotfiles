@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs dependencies.
@@ -112,7 +112,6 @@
 
           "aarch64-darwin" = [
             inputs.nix-homebrew.darwinModules.nix-homebrew
-            ./modules/darwin/iterm2/default.nix
             ./modules/darwin/caps2esc.nix
             ./modules/darwin/homebrew.nix
             ./modules/darwin/packages.nix

@@ -25,7 +25,7 @@ in
         persistent-apps = lib.lists.flatten [
           "/Applications/Brave Browser.app"
           "/Applications/Visual Studio Code.app"
-          "/Applications/iTerm.app"
+          "/Applications/Ghostty.app"
           "/Applications/Obsidian.app"
           (ifWork "/Applications/Slack.app")
           "/Applications/Discord.app"
