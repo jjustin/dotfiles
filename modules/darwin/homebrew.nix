@@ -24,8 +24,26 @@
     mutableTaps = true;
   };
 
+  # https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.enable
   homebrew = {
     enable = true;
+    # register the taps from nix-homebrew
+    taps = builtins.attrNames config.nix-homebrew.taps;
+    onActivation = {
+      # Uninstall any casks that are not in the casks list
+      cleanup = "uninstall";
+
+      # upgrade the casks to latest available version. This should update only
+      # to latest version available in the input taps.
+      upgrade = true;
+      # Don't update brew during installation. The installation is handled by
+      # nix-homebrew and it should not be updated.
+      autoUpdate = false;
+    };
+    # Don't auto update brew when running brew commands
+    # See https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.global.autoUpdate
+    global.autoUpdate = false;
+
     casks = [
       "beekeeper-studio"
       "brave-browser"
@@ -54,7 +72,5 @@
       "calibre"
       "whisky"
     ];
-    onActivation.cleanup = "uninstall";
-    taps = builtins.attrNames config.nix-homebrew.taps;
   };
 }
