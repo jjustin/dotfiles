@@ -39,7 +39,7 @@
       "orbstack"
       "postman"
       "rectangle"
-      "redisinsight"
+      "redis-insight"
       "screen-studio"
       "signal"
       "spotify"
