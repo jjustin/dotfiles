@@ -29,6 +29,7 @@ in
       confirm-close-surface = false;
       keybind = [
         "global:ctrl+super+/=toggle_quick_terminal"
+        "super+f=write_screen_file:open"
       ];
     };
   };
