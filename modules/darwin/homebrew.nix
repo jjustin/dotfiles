@@ -46,6 +46,7 @@
 
     casks = [
       "beekeeper-studio"
+      "bitwarden"
       "brave-browser"
       "chromium"
       "discord"

@@ -37,6 +37,9 @@
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
       # End Nix
+
+      # Homebrew
+      export PATH=/opt/homebrew/bin:$PATH
     '';
 
     oh-my-zsh = {

@@ -23,6 +23,7 @@
     k6
     k9s
     kubectl
+    kubernetes-helm
     minio-client
     mise
     neofetch
