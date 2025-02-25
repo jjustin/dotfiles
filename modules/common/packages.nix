@@ -12,7 +12,7 @@
     gcc
     git
     gitlab-ci-ls
-    go_1_22
+    go_1_24
     go-task #taskfile
     gnupg
     hadolint # docker lint

@@ -5,6 +5,6 @@
 
   fonts.packages = with pkgs; [
     meslo-lgs-nf
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
   ];
 }

@@ -14,6 +14,4 @@
     name = config.myvars.user.username;
     home = config.myvars.user.homeDirectory;
   };
-
-  services.nix-daemon.enable = true;
 }
