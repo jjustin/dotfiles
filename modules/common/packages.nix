@@ -24,6 +24,7 @@
     k9s
     kubectl
     minio-client
+    mise
     neofetch
     neovim
     ngrok
@@ -34,6 +35,7 @@
     python3
     rustup
     sshuttle
+    usage # autocompletion for mise
     tcpdump
     tig
     wget

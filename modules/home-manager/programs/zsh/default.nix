@@ -44,6 +44,7 @@
       plugins = [
         "aws"
         "git"
+        "mise"
         "z"
       ];
     };
