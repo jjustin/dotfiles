@@ -15,7 +15,25 @@ Private configuration is located in `private/private.nix` but is not part of the
 }
 ```
 
-## Building
+## First time setup
+
+### MacOS
+
+1. Install nix
+
+    ```sh
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+    ```
+
+    See: [Determinate Systems nix install](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#install-nix)
+
+1. Build the system
+
+    ```sh
+    nix run nix-darwin/master#darwin-rebuild -- switch --flake path:///path/to/flake#arthur
+    ```
+
+## Rebuilding
 
 rebuild with:
 
@@ -37,3 +55,18 @@ or
 ```sh
 darwin-rebuild switch --flake path:///path/to/flake#maccree
 ```
+
+## Uninstall nix
+
+See: [Determinate Systems nix uninstall](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#uninstalling)
+
+## Hosts
+
+| Host      | Description          |
+| --------- | -------------------- |
+| Arthur    | Mac mini             |
+| Kratos    | Desktop WSL (unused) |
+| Maccree   | Work Macbook         |
+| Pinnochio | Raspberry PI         |
+| Steve     | Server (unused)      |
+| V         | Personal Laptop      |

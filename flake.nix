@@ -23,8 +23,6 @@
       url = "github:nix-community/nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nix-darwin.follows = "nix-darwin";
-        home-manager.follows = "home-manager";
       };
     };
 
@@ -118,7 +116,7 @@
             ./modules/darwin/system.nix
             ({
               myvars.user.homeDirectory = "/Users/jjustin";
-              system.stateVersion = 4;
+              system.stateVersion = 5;
             })
           ];
         }).${system};
@@ -176,9 +174,6 @@
                 conf = ./hosts/arthur.nix;
               }
             );
-
-          # Expose the package set, including overlays, for convenience.
-          darwinPackages = self.darwinConfigurations."maccree".pkgs;
         };
     };
 }
