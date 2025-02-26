@@ -2,6 +2,7 @@
 
   programs = {
     nixvim = {
+      # https://nix-community.github.io/nixvim/NeovimOptions/index.html
       enable = true;
       defaultEditor = true;
       viAlias = true;
@@ -18,11 +19,19 @@
       plugins = {
         lualine.enable = true;
 
+        lsp-format.enable = true;
+
         lsp = {
           enable = true;
           servers = {
+            # Typescript
             ts_ls.enable = true;
+            # Lua
             lua_ls.enable = true;
+            # Golang
+            golangci_lint_ls.enable = true;
+            gopls.enable = true;
+
             rust_analyzer = {
               enable = true;
               installRustc = false;
