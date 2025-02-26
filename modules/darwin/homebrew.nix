@@ -69,6 +69,7 @@
       "insomnia"
       "slack"
     ] ++ lib.optionals config.myvars.host.personal [
+      "caffeine"
       "calibre"
       "obs"
       "qbittorrent"
