@@ -1,12 +1,17 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   nixpkgs.hostPlatform = "aarch64-darwin";
-  
+
   myvars.host.personal = true;
 
   myvars.unfreePackages = [
     (lib.getName pkgs.rar)
   ];
-
 
   my.services.caps2esc.enable = true;
 

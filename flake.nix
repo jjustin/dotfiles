@@ -52,128 +52,144 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      ...
+    }@inputs:
     let
       private = import ./private/private.nix;
-      getConfiguration = { home-manager-modules, system, conf }: {
-        system = system;
-        specialArgs = { inherit inputs; };
+      getConfiguration =
+        {
+          home-manager-modules,
+          system,
+          conf,
+        }:
+        {
+          system = system;
+          specialArgs = { inherit inputs; };
 
-        modules = [
-          conf
-          ./variables.nix
-          ./modules/common/misc.nix
-          ./modules/common/programs.nix
-          ./modules/common/packages.nix
+          modules =
+            [
+              conf
+              ./variables.nix
+              ./modules/common/misc.nix
+              ./modules/common/programs.nix
+              ./modules/common/packages.nix
 
-          home-manager-modules.home-manager
-          ({ config, lib, ... }: {
-            # Enable Flakes and the new command-line tool
-            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+              home-manager-modules.home-manager
+              (
+                { config, lib, ... }:
+                {
+                  # Enable Flakes and the new command-line tool
+                  nix.settings.experimental-features = [
+                    "nix-command"
+                    "flakes"
+                  ];
 
-            nixpkgs.overlays = import ./overlays/overlays.nix;
+                  nixpkgs.overlays = import ./overlays/overlays.nix;
 
-            nixpkgs.config.allowUnfreePredicate = pkg:
-              builtins.elem (lib.getName pkg) config.myvars.unfreePackages;
+                  nixpkgs.config.allowUnfreePredicate =
+                    pkg: builtins.elem (lib.getName pkg) config.myvars.unfreePackages;
 
-            # Configure home manager
-            home-manager.extraSpecialArgs = { inherit inputs private; myvars = config.myvars; };
+                  # Configure home manager
+                  home-manager.extraSpecialArgs = {
+                    inherit inputs private;
+                    myvars = config.myvars;
+                  };
 
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
 
-            home-manager.users.${config.myvars.user.username} = import ./modules/home-manager/home.nix;
-          })
-        ] ++ ( let linuxModules = [
-            ./modules/nixos/caps2esc.nix
-            ./modules/nixos/localization.nix
-            ./modules/nixos/nvidia.nix
-            ./modules/nixos/networking.nix
-            ./modules/nixos/obsidian.nix
-            ./modules/nixos/plex.nix
-            ./modules/nixos/qbittorrent.nix
-            ./modules/nixos/ssh.nix
-            ./modules/nixos/udev.nix
-            ./modules/nixos/users.nix
-            {
-              # This value determines the NixOS release from which the default
-              # settings for stateful data, like file locations and database versions
-              # on your system were taken. It‘s perfectly fine and recommended to leave
-              # this value at the release version of the first install of this system.
-              # Before changing this value read the documentation for this option
-              # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-              system.stateVersion = "23.11"; # Did you read the comment?
-            }
-          ]; in {
-	  "x86_64-linux" = linuxModules;
-	  "aarch64-linux" = linuxModules;
+                  home-manager.users.${config.myvars.user.username} = import ./modules/home-manager/home.nix;
+                }
+              )
+            ]
+            ++ (
+              let
+                linuxModules = [
+                  ./modules/nixos/caps2esc.nix
+                  ./modules/nixos/localization.nix
+                  ./modules/nixos/nvidia.nix
+                  ./modules/nixos/networking.nix
+                  ./modules/nixos/obsidian.nix
+                  ./modules/nixos/plex.nix
+                  ./modules/nixos/qbittorrent.nix
+                  ./modules/nixos/ssh.nix
+                  ./modules/nixos/udev.nix
+                  ./modules/nixos/users.nix
+                  {
+                    # This value determines the NixOS release from which the default
+                    # settings for stateful data, like file locations and database versions
+                    # on your system were taken. It‘s perfectly fine and recommended to leave
+                    # this value at the release version of the first install of this system.
+                    # Before changing this value read the documentation for this option
+                    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+                    system.stateVersion = "23.11"; # Did you read the comment?
+                  }
+                ];
+              in
+              {
+                "x86_64-linux" = linuxModules;
+                "aarch64-linux" = linuxModules;
 
-          "aarch64-darwin" = [
-            inputs.nix-homebrew.darwinModules.nix-homebrew
-            ./modules/darwin/caps2esc.nix
-            ./modules/darwin/homebrew.nix
-            ./modules/darwin/packages.nix
-            ./modules/darwin/system.nix
-            ({
-              myvars.user.homeDirectory = "/Users/jjustin";
-              system.stateVersion = 5;
-            })
-          ];
-        }).${system};
-      };
+                "aarch64-darwin" = [
+                  inputs.nix-homebrew.darwinModules.nix-homebrew
+                  ./modules/darwin/caps2esc.nix
+                  ./modules/darwin/homebrew.nix
+                  ./modules/darwin/packages.nix
+                  ./modules/darwin/system.nix
+                  ({
+                    myvars.user.homeDirectory = "/Users/jjustin";
+                    system.stateVersion = 5;
+                  })
+                ];
+              }
+            ).${system};
+        };
     in
     {
-      nixosConfigurations =
-        {
-          "pinnochio" = nixpkgs.lib.nixosSystem (
-            getConfiguration {
-              home-manager-modules = home-manager.nixosModules;
-              system = "aarch64-linux";
-              conf = ./hosts/pinnochio.nix;
-            }
-          );
-          "v" = nixpkgs.lib.nixosSystem (
-            getConfiguration {
-              home-manager-modules = home-manager.nixosModules;
-              system = "x86_64-linux";
-              conf = ./hosts/v.nix;
-            }
-          );
-          "steve" = nixpkgs.lib.nixosSystem (
-            getConfiguration {
-              home-manager-modules = home-manager.nixosModules;
-              system = "x86_64-linux";
-              conf = ./hosts/steve.nix;
-            }
-          );
-          "kratos" = nixpkgs.lib.nixosSystem (
-            getConfiguration {
-              home-manager-modules = home-manager.nixosModules;
-              system = "x86_64-linux";
-              conf = ./hosts/kratos.nix;
-             }
-          );
-        };
+      nixosConfigurations = {
+        "pinnochio" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-modules = home-manager.nixosModules;
+          system = "aarch64-linux";
+          conf = ./hosts/pinnochio.nix;
+        });
+        "v" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-modules = home-manager.nixosModules;
+          system = "x86_64-linux";
+          conf = ./hosts/v.nix;
+        });
+        "steve" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-modules = home-manager.nixosModules;
+          system = "x86_64-linux";
+          conf = ./hosts/steve.nix;
+        });
+        "kratos" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-modules = home-manager.nixosModules;
+          system = "x86_64-linux";
+          conf = ./hosts/kratos.nix;
+        });
+      };
 
-      darwinConfigurations =
-        {
-          "maccree" = nix-darwin.lib.darwinSystem
-            (
-              getConfiguration {
-                home-manager-modules = home-manager.darwinModules;
-                system = "aarch64-darwin";
-                conf = ./hosts/maccree.nix;
-              }
-            );
+      darwinConfigurations = {
+        "maccree" = nix-darwin.lib.darwinSystem (getConfiguration {
+          home-manager-modules = home-manager.darwinModules;
+          system = "aarch64-darwin";
+          conf = ./hosts/maccree.nix;
+        });
 
-          "arthur" = nix-darwin.lib.darwinSystem
-            (
-              getConfiguration {
-                home-manager-modules = home-manager.darwinModules;
-                system = "aarch64-darwin";
-                conf = ./hosts/arthur.nix;
-              }
-            );
-        };
+        "arthur" = nix-darwin.lib.darwinSystem (getConfiguration {
+          home-manager-modules = home-manager.darwinModules;
+          system = "aarch64-darwin";
+          conf = ./hosts/arthur.nix;
+        });
+      };
+
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+
     };
 }

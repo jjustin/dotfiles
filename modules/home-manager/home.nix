@@ -1,4 +1,13 @@
-{ config, lib, pkgs, nixpkgs, inputs, myvars, private, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  nixpkgs,
+  inputs,
+  myvars,
+  private,
+  ...
+}:
 
 # https://nix-community.github.io/home-manager/options.xhtml
 

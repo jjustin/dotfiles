@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 {
@@ -32,11 +37,10 @@ with lib;
         default = "Janez Justin";
       };
 
-      sshAuthorizedKeys = mkOption
-        {
-          type = types.listOf types.str;
-          default = [ ];
-        };
+      sshAuthorizedKeys = mkOption {
+        type = types.listOf types.str;
+        default = [ ];
+      };
     };
 
     host = {

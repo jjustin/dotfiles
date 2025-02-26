@@ -1,19 +1,25 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
-let cfg = config.my.obsidian;
-in {
+let
+  cfg = config.my.obsidian;
+in
+{
   options.my.obsidian = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
 
-    confirmUnfree = mkOption
-      {
-        type = types.bool;
-        default = false;
-      };
+    confirmUnfree = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {

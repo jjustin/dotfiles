@@ -1,4 +1,13 @@
-{ config, lib, pkgs, nixpkgs, inputs, myvars, private, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  nixpkgs,
+  inputs,
+  myvars,
+  private,
+  ...
+}:
 {
   imports = [
     ./git.nix

@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
-let cfg = config.my.services.udev;
-in {
+let
+  cfg = config.my.services.udev;
+in
+{
   options.my.services.udev = {
     rules = mkOption {
       type = types.listOf types.str;

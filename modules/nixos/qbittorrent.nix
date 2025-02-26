@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.my.services.qbittorrent;
@@ -78,6 +83,8 @@ in
       extraGroups = [ "storage" ];
     };
 
-    users.groups.qbittorrent = { gid = null; };
+    users.groups.qbittorrent = {
+      gid = null;
+    };
   };
 }

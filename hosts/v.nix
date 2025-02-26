@@ -1,11 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./v-hardware.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./v-hardware.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -23,25 +27,22 @@
     confirmUnfree = true;
   };
 
-  my.services.caps2esc =
-    {
-      enable = true;
-      device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
-    };
+  my.services.caps2esc = {
+    enable = true;
+    device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+  };
 
-  myvars.unfreePackages =
-    [
-      (lib.getName pkgs.discord)
-      (lib.getName pkgs.spotify)
-      (lib.getName pkgs.vscode)
-      (lib.getName pkgs.steam)
-      ("steam-original")
-      ("steam-run")
-    ];
+  myvars.unfreePackages = [
+    (lib.getName pkgs.discord)
+    (lib.getName pkgs.spotify)
+    (lib.getName pkgs.vscode)
+    (lib.getName pkgs.steam)
+    ("steam-original")
+    ("steam-run")
+  ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

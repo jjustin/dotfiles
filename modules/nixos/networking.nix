@@ -1,7 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.my.networking;
-in {
+let
+  cfg = config.my.networking;
+in
+{
   options.my.networking = {
     hostName = lib.mkOption {
       type = lib.types.str;
@@ -9,11 +16,10 @@ in {
     };
 
     enableWakeOnLAN = lib.mkEnableOption "wake on lan";
-    wakeOnLanInterface = lib.mkOption
-      {
-        type = lib.types.str;
-        default = "eth0";
-      };
+    wakeOnLanInterface = lib.mkOption {
+      type = lib.types.str;
+      default = "eth0";
+    };
   };
 
   config = {

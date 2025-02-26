@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
-let cfg = config.my.services.ssh;
-in {
+let
+  cfg = config.my.services.ssh;
+in
+{
   options.my.services.ssh = {
     enable = mkEnableOption "ssh";
     enableRootKeyLogin = mkEnableOption "root key login";

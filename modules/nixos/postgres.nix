@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
-let cfg = config.my.services.postgres;
-in {
+let
+  cfg = config.my.services.postgres;
+in
+{
   options.my.services.postgres = {
     enable = mkEnableOption "postgres";
     enableRootKeyLogin = mkEnableOption "root key login";

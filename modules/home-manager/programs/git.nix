@@ -1,4 +1,11 @@
-{ config, lib, myvars, private, ... }: {
+{
+  config,
+  lib,
+  myvars,
+  private,
+  ...
+}:
+{
   programs.git = {
     enable = true;
     aliases = {
@@ -52,17 +59,17 @@
       let
         includeConfig = private.gitIncludes;
       in
-      map
-        (key:
-          {
-            contents = includeConfig.${key} // { meta."is${key}" = true; };
-            contentSuffix = "gitconfig_" + key;
-            condition =
-              let path = "~/${key}" + (if key == "" then "" else "/");
-              in "gitdir:${path}";
-          }
-        )
-        (builtins.attrNames includeConfig);
+      map (key: {
+        contents = includeConfig.${key} // {
+          meta."is${key}" = true;
+        };
+        contentSuffix = "gitconfig_" + key;
+        condition =
+          let
+            path = "~/${key}" + (if key == "" then "" else "/");
+          in
+          "gitdir:${path}";
+      }) (builtins.attrNames includeConfig);
 
     extraConfig = {
       init.defaultBranch = "main";

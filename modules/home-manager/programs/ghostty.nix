@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.my.ghostty;
 in
@@ -14,16 +19,12 @@ in
   };
 
   config = {
-    xdg.configFile."ghostty/config" =
-      {
-
-        text = lib.generators.toKeyValue
-          {
-            mkKeyValue = lib.generators.mkKeyValueDefault { } " = ";
-            listsAsDuplicateKeys = true;
-          }
-          cfg.config;
-      };
+    xdg.configFile."ghostty/config" = {
+      text = lib.generators.toKeyValue {
+        mkKeyValue = lib.generators.mkKeyValueDefault { } " = ";
+        listsAsDuplicateKeys = true;
+      } cfg.config;
+    };
 
     my.ghostty.config = {
       confirm-close-surface = false;

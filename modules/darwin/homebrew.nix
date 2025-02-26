@@ -1,6 +1,12 @@
-{ config, pkgs, inputs, lib, ... }:
 {
-  ## This handles the installation of homebrew itself and configures the taps. 
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
+{
+  ## This handles the installation of homebrew itself and configures the taps.
   ## Actual packages/casks installation is done later on in `homebrew.<...>`
   nix-homebrew = {
     # Install Homebrew under the default prefix
@@ -44,36 +50,39 @@
     # See https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.global.autoUpdate
     global.autoUpdate = false;
 
-    casks = [
-      "beekeeper-studio"
-      "bitwarden"
-      "brave-browser"
-      "chromium"
-      "discord"
-      "drawio"
-      "firefox"
-      "ghostty"
-      "hex-fiend"
-      "obsidian"
-      "orbstack"
-      "postman"
-      "rectangle"
-      "redis-insight"
-      "screen-studio"
-      "signal"
-      "spotify"
-      "syncthing"
-      "visual-studio-code"
-      "vlc"
-    ] ++ lib.optionals config.myvars.host.work [
-      "insomnia"
-      "slack"
-    ] ++ lib.optionals config.myvars.host.personal [
-      "caffeine"
-      "calibre"
-      "obs"
-      "qbittorrent"
-      "whisky"
-    ];
+    casks =
+      [
+        "beekeeper-studio"
+        "bitwarden"
+        "brave-browser"
+        "chromium"
+        "discord"
+        "drawio"
+        "firefox"
+        "ghostty"
+        "hex-fiend"
+        "obsidian"
+        "orbstack"
+        "postman"
+        "rectangle"
+        "redis-insight"
+        "screen-studio"
+        "signal"
+        "spotify"
+        "syncthing"
+        "visual-studio-code"
+        "vlc"
+      ]
+      ++ lib.optionals config.myvars.host.work [
+        "insomnia"
+        "slack"
+      ]
+      ++ lib.optionals config.myvars.host.personal [
+        "caffeine"
+        "calibre"
+        "obs"
+        "qbittorrent"
+        "whisky"
+      ];
   };
 }

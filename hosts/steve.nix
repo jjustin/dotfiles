@@ -1,11 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./steve-hardware.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./steve-hardware.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
