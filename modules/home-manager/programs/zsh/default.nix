@@ -31,28 +31,26 @@
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
+      {
+        name = "powerlevel10k-config";
+        src = ./p10k-config;
+        file = "p10k.zsh";
+      }
     ];
 
-    initExtra =
-      let
-        p10kConfig = ./p10k.zsh;
-      in
-      ''
-        # p10k
-        [[ ! -f ${p10kConfig} ]] || source ${p10kConfig}
+    initExtra = ''
+      # kubectl
+      source <(kubectl completion zsh)
 
-        # kubectl
-        source <(kubectl completion zsh)
+      # Nix
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+      # End Nix
 
-        # Nix
-        if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-        fi
-        # End Nix
-
-        # Homebrew
-        export PATH=/opt/homebrew/bin:$PATH
-      '';
+      # Homebrew
+      export PATH=/opt/homebrew/bin:$PATH
+    '';
 
     oh-my-zsh = {
       enable = true;
