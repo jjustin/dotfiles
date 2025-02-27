@@ -42,6 +42,9 @@
       # kubectl
       source <(kubectl completion zsh)
 
+      # taskfile
+      source <(task --completion zsh)
+
       # Nix
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
