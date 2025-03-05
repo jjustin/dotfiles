@@ -25,6 +25,9 @@ Private configuration is located in `private/private.nix` but is not part of the
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     ```
 
+    Select "No" when asked to install Determinate Nix.
+    Let `darwin-nix` handle the installed nix instance.
+
     See: [Determinate Systems nix install](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#install-nix)
 
 1. Build the system
