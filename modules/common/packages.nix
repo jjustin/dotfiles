@@ -16,6 +16,7 @@
       aws-vault
       awscli2
       direnv
+      dive
       gcc
       git
       gitlab-ci-ls
