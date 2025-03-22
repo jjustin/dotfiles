@@ -12,7 +12,7 @@ in
   options.my.networking = {
     hostName = lib.mkOption {
       type = lib.types.str;
-      default = "I have no hostname set!";
+      default = config.my.vars.host.hostName;
     };
 
     enableWakeOnLAN = lib.mkEnableOption "wake on lan";

@@ -6,7 +6,6 @@
 }:
 
 {
-
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     initrd.availableKernelModules = [
@@ -28,15 +27,15 @@
     };
   };
 
-  my.networking.hostName = "pinnochio";
+  my.vars.host.hostName = "pinnochio";
 
   my.services.ssh = {
     enable = true;
     enableRootKeyLogin = false;
   };
 
-  myvars.user.sshAuthorizedKeys = [
-    config.myvars.sshKey
+  my.vars.user.sshAuthorizedKeys = [
+    config.my.vars.sshKey
   ];
 
   my.services.postgres = {

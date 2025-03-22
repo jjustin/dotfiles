@@ -1,10 +1,10 @@
 {
   config,
   lib,
-  myvars,
-  private,
+  my,
   ...
 }:
+
 {
   programs.git = {
     enable = true;
@@ -53,11 +53,11 @@
       sts = "status --short";
     };
 
-    userName = myvars.user.fullName;
+    userName = my.vars.user.fullName;
 
     includes =
       let
-        includeConfig = private.gitIncludes;
+        includeConfig = my.private.gitIncludes;
       in
       map (key: {
         contents = includeConfig.${key} // {
@@ -66,7 +66,7 @@
         contentSuffix = "gitconfig_" + key;
         condition =
           let
-            path = "~/${key}" + (if key == "" then "" else "/");
+            path = (if key == "" then "/" else "~/${key}/");
           in
           "gitdir:${path}";
       }) (builtins.attrNames includeConfig);

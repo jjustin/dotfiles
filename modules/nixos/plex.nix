@@ -25,7 +25,7 @@ in
   config = lib.mkIf cfg.enable {
     users.users.plex.extraGroups = [ "storage" ];
 
-    myvars.unfreePackages = mkIf cfg.confirmUnfree [
+    my.vars.unfreePackages = mkIf cfg.confirmUnfree [
       (lib.getName pkgs.plex)
     ];
 

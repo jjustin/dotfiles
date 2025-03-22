@@ -16,7 +16,7 @@
     enableRosetta = true;
 
     # User owning the Homebrew prefix
-    user = config.myvars.user.username;
+    user = config.my.vars.user.username;
 
     # Declarative tap management
     taps = {
@@ -73,11 +73,11 @@
         "visual-studio-code"
         "vlc"
       ]
-      ++ lib.optionals config.myvars.host.work [
+      ++ lib.optionals config.my.vars.host.work [
         "insomnia"
         "slack"
       ]
-      ++ lib.optionals config.myvars.host.personal [
+      ++ lib.optionals config.my.vars.host.personal [
         "caffeine"
         "calibre"
         "obs"

@@ -5,7 +5,7 @@
   ...
 }:
 {
-  environment.systemPackages = lib.mkIf config.myvars.host.work [
+  environment.systemPackages = lib.mkIf config.my.vars.host.work [
     pkgs.cloudflared
   ];
 }

@@ -8,7 +8,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./steve-hardware.nix
+    ./server-hardware.nix
   ];
 
   # Bootloader.
@@ -16,8 +16,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0";
 
+  my.vars.host.hostName = "steve";
+
   my.networking = {
-    hostName = "steve";
     enableWakeOnLAN = true;
     wakeOnLanInterface = "enp5s0";
   };
@@ -43,7 +44,7 @@
     usbutils # lsusb
   ];
 
-  myvars.user.sshAuthorizedKeys = [
-    config.myvars.sshKey
+  my.vars.user.sshAuthorizedKeys = [
+    config.my.vars.sshKey
   ];
 }

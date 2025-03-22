@@ -1,7 +1,7 @@
 { lib, config, ... }:
 let
-  ifPersonal = application: lib.optional config.myvars.host.personal application;
-  ifWork = application: lib.optional config.myvars.host.work application;
+  ifPersonal = application: lib.optional config.my.vars.host.personal application;
+  ifWork = application: lib.optional config.my.vars.host.work application;
 in
 {
   system = {

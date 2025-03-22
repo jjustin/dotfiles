@@ -25,7 +25,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    myvars.unfreePackages = mkIf cfg.confirmUnfree [
+    my.vars.unfreePackages = mkIf cfg.confirmUnfree [
       (lib.getName config.boot.kernelPackages.nvidiaPackages.production)
       "nvidia-settings"
     ];

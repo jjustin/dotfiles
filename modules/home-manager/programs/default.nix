@@ -4,8 +4,6 @@
   pkgs,
   nixpkgs,
   inputs,
-  myvars,
-  private,
   ...
 }:
 {

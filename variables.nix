@@ -7,7 +7,7 @@
 
 with lib;
 {
-  options.myvars = {
+  options.my.vars = {
     unfreePackages = mkOption {
       type = types.listOf types.str;
       default = [ ];
@@ -46,6 +46,10 @@ with lib;
     host = {
       personal = mkEnableOption "configuration option marking the host as personal";
       work = mkEnableOption "configuration option marking the host as work";
+      hostName = mkOption {
+        type = types.str;
+        default = throw "hostname not set - my.vars.host.hostname";
+      };
     };
   };
 }

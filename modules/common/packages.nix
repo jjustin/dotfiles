@@ -6,7 +6,7 @@
 }:
 {
 
-  myvars.unfreePackages = [
+  my.vars.unfreePackages = [
     (lib.getName pkgs.ngrok)
   ];
 
@@ -50,7 +50,7 @@
       wget
       watch
     ]
-    ++ lib.optionals config.myvars.host.personal [
+    ++ lib.optionals config.my.vars.host.personal [
       rar
     ];
 }

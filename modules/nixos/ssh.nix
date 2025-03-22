@@ -21,7 +21,7 @@ in
     services.openssh.settings.PasswordAuthentication = false;
     services.openssh.settings.PermitRootLogin = "without-password";
     users.users.root = lib.mkIf cfg.enableRootKeyLogin {
-      openssh.authorizedKeys.keys = config.myvars.user.sshAuthorizedKeys;
+      openssh.authorizedKeys.keys = config.my.vars.user.sshAuthorizedKeys;
     };
   };
 }

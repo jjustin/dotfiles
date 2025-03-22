@@ -15,7 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  my.networking.hostName = "v";
+  my.vars.host.hostName = "kratos";
 
   my.nvidia = {
     enable = true;
@@ -32,7 +32,7 @@
     device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
   };
 
-  myvars.unfreePackages = [
+  my.vars.unfreePackages = [
     (lib.getName pkgs.discord)
     (lib.getName pkgs.spotify)
     (lib.getName pkgs.vscode)

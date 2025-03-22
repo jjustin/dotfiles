@@ -10,10 +10,10 @@
     gid = 1012;
   };
 
-  users.users.${config.myvars.user.username} = {
+  users.users.${config.my.vars.user.username} = {
     isNormalUser = true;
     password = "changeme!";
-    description = config.myvars.user.fullName;
+    description = config.my.vars.user.fullName;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -21,6 +21,6 @@
     ];
     uid = 1000;
     shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = config.myvars.user.sshAuthorizedKeys;
+    openssh.authorizedKeys.keys = config.my.vars.user.sshAuthorizedKeys;
   };
 }

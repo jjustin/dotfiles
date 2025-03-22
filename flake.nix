@@ -61,10 +61,9 @@
       ...
     }@inputs:
     let
-      private = import ./private/private.nix;
       getConfiguration =
         {
-          home-manager-modules,
+          home-manager-module,
           system,
           conf,
         }:
@@ -74,13 +73,14 @@
 
           modules =
             [
+              home-manager-module
               conf
               ./variables.nix
+              ./private
               ./modules/common/misc.nix
               ./modules/common/programs.nix
               ./modules/common/packages.nix
 
-              home-manager-modules.home-manager
               (
                 { config, lib, ... }:
                 {
@@ -93,18 +93,18 @@
                   nixpkgs.overlays = import ./overlays/overlays.nix;
 
                   nixpkgs.config.allowUnfreePredicate =
-                    pkg: builtins.elem (lib.getName pkg) config.myvars.unfreePackages;
+                    pkg: builtins.elem (lib.getName pkg) config.my.vars.unfreePackages;
 
                   # Configure home manager
                   home-manager.extraSpecialArgs = {
-                    inherit inputs private;
-                    myvars = config.myvars;
+                    inherit inputs;
+                    my = config.my;
                   };
 
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
 
-                  home-manager.users.${config.myvars.user.username} = import ./modules/home-manager/home.nix;
+                  home-manager.users.${config.my.vars.user.username} = import ./modules/home-manager/home.nix;
                 }
               )
             ]
@@ -142,10 +142,13 @@
                   ./modules/darwin/homebrew.nix
                   ./modules/darwin/packages.nix
                   ./modules/darwin/system.nix
-                  ({
-                    myvars.user.homeDirectory = "/Users/jjustin";
-                    system.stateVersion = 5;
-                  })
+                  (
+                    { config, ... }:
+                    {
+                      my.vars.user.homeDirectory = "/Users/${config.my.vars.user.username}";
+                      system.stateVersion = 5;
+                    }
+                  )
                 ];
               }
             ).${system};
@@ -153,43 +156,34 @@
     in
     {
       nixosConfigurations = {
-        "pinnochio" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-modules = home-manager.nixosModules;
+        "rpi" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-module = home-manager.nixosModule;
           system = "aarch64-linux";
-          conf = ./hosts/pinnochio.nix;
+          conf = ./hosts/rpi.nix;
         });
-        "v" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-modules = home-manager.nixosModules;
+        "gaming" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-module = home-manager.nixosModule;
           system = "x86_64-linux";
-          conf = ./hosts/v.nix;
+          conf = ./hosts/gaming.nix;
         });
         "steve" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-modules = home-manager.nixosModules;
+          home-manager-module = home-manager.nixosModule;
           system = "x86_64-linux";
           conf = ./hosts/steve.nix;
         });
-        "kratos" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-modules = home-manager.nixosModules;
+        "wsl" = nixpkgs.lib.nixosSystem (getConfiguration {
+          home-manager-module = home-manager.nixosModule;
           system = "x86_64-linux";
-          conf = ./hosts/kratos.nix;
+          conf = ./hosts/wsl.nix;
         });
       };
 
       darwinConfigurations = {
-        "maccree" = nix-darwin.lib.darwinSystem (getConfiguration {
-          home-manager-modules = home-manager.darwinModules;
+        "work" = nix-darwin.lib.darwinSystem (getConfiguration {
+          home-manager-module = home-manager.darwinModule;
           system = "aarch64-darwin";
-          conf = ./hosts/maccree.nix;
-        });
-
-        "arthur" = nix-darwin.lib.darwinSystem (getConfiguration {
-          home-manager-modules = home-manager.darwinModules;
-          system = "aarch64-darwin";
-          conf = ./hosts/arthur.nix;
+          conf = ./hosts/work.nix;
         });
       };
-
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
-
     };
 }

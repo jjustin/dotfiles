@@ -15,8 +15,11 @@
     inputs.nix-wsl.nixosModules.wsl
   ];
 
-  my.networking.hostName = "kratos";
+  my.vars.host.hostName = "isaac";
 
   wsl.enable = true;
-  wsl.defaultUser = config.myvars.user.username;
+  wsl.defaultUser = config.my.vars.user.username;
+
+  # VSCode server fix: https://nixos.wiki/wiki/Visual_Studio_Code#nix-ld
+  programs.nix-ld.enable = true;
 }

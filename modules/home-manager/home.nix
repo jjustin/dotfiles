@@ -4,8 +4,7 @@
   pkgs,
   nixpkgs,
   inputs,
-  myvars,
-  private,
+  my,
   ...
 }:
 
@@ -19,8 +18,8 @@
 
   programs.home-manager.enable = true;
 
-  home.username = myvars.user.username;
-  home.homeDirectory = myvars.user.homeDirectory;
+  home.username = my.vars.user.username;
+  home.homeDirectory = my.vars.user.homeDirectory;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
