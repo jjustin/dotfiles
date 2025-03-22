@@ -166,10 +166,10 @@
           system = "x86_64-linux";
           conf = ./hosts/gaming.nix;
         });
-        "steve" = nixpkgs.lib.nixosSystem (getConfiguration {
+        "server" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModule;
           system = "x86_64-linux";
-          conf = ./hosts/steve.nix;
+          conf = ./hosts/server.nix;
         });
         "wsl" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModule;
