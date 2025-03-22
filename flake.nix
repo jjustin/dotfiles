@@ -146,6 +146,11 @@
                     { config, ... }:
                     {
                       my.vars.user.homeDirectory = "/Users/${config.my.vars.user.username}";
+                      users.users.${config.my.vars.user.username} = {
+                        name = config.my.vars.user.username;
+                        home = config.my.vars.user.homeDirectory;
+                      };
+
                       system.stateVersion = 5;
                     }
                   )
