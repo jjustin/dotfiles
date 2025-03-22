@@ -29,7 +29,7 @@
   ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
-  myvars.unfreePackages = [
+  my.vars.unfreePackages = [
     (lib.getName config.boot.kernelPackages.broadcom_sta)
   ];
 
