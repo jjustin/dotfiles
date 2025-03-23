@@ -53,7 +53,7 @@ sudo nixos-rebuild switch --flake path:///path/to/flake#wsl
 or
 
 ```sh
-nixos-rebuild switch --flake path:///home/jjustin/dotfiles#server --target-host root@<server host>
+nixos-rebuild switch --flake path:///home/jjustin/dotfiles#server --target-host root@steve.local.jjustin.dev
 ```
 
 or
