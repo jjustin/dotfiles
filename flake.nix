@@ -50,6 +50,11 @@
       url = "github:blimmer/zsh-aws-vault";
       flake = false;
     };
+
+    caddy-cloudflare = {
+      url = "github:caddy-dns/cloudflare";
+      flake = false;
+    };
   };
 
   outputs =
@@ -111,7 +116,9 @@
             ++ (
               let
                 linuxModules = [
+                  ./modules/nixos/caddy.nix
                   ./modules/nixos/caps2esc.nix
+                  ./modules/nixos/immich.nix
                   ./modules/nixos/localization.nix
                   ./modules/nixos/nvidia.nix
                   ./modules/nixos/networking.nix

@@ -6,6 +6,9 @@
 }:
 
 with lib;
+let
+  cfg = config.my.vars;
+in
 {
   options.my.vars = {
     unfreePackages = mkOption {
@@ -39,13 +42,14 @@ with lib;
 
       sshAuthorizedKeys = mkOption {
         type = types.listOf types.str;
-        default = [ ];
+        default = lib.optionals cfg.host.server [ cfg.sshKey ];
       };
     };
 
     host = {
       personal = mkEnableOption "configuration option marking the host as personal";
       work = mkEnableOption "configuration option marking the host as work";
+      server = mkEnableOption "configuration option marking the host as server";
       hostName = mkOption {
         type = types.str;
         default = throw "hostname not set - my.vars.host.hostname";

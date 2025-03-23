@@ -15,6 +15,7 @@
     [
       aws-vault
       awscli2
+      dig
       direnv
       dive
       gcc
@@ -48,6 +49,7 @@
       tcpdump
       tig
       wget
+      whois
       watch
     ]
     ++ lib.optionals config.my.vars.host.personal [

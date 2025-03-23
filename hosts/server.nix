@@ -16,12 +16,21 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0";
 
-  my.vars.host.hostName = "steve";
+  my.vars.host = {
+    server = true;
+    hostName = "steve";
+  };
 
   my.networking = {
     enableWakeOnLAN = true;
-    wakeOnLanInterface = "enp5s0";
+    wakeOnLanInterface = "enp3s0f0";
   };
+
+  my.services.caddy = {
+    enable = true;
+    openFirewall = true;
+  };
+
 
   my.services.plex = {
     enable = true;
@@ -30,7 +39,6 @@
 
   my.services.qbittorrent = {
     enable = true;
-    openFirewall = true;
   };
 
   my.services.ssh = {
@@ -42,9 +50,5 @@
 
   environment.systemPackages = with pkgs; [
     usbutils # lsusb
-  ];
-
-  my.vars.user.sshAuthorizedKeys = [
-    config.my.vars.sshKey
   ];
 }

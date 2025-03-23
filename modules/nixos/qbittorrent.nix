@@ -86,5 +86,10 @@ in
     users.groups.qbittorrent = {
       gid = null;
     };
+
+    my.services.caddy.services.qb = {
+      port = cfg.port;
+      public = true;
+    };
   };
 }

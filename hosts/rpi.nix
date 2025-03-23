@@ -27,16 +27,15 @@
     };
   };
 
-  my.vars.host.hostName = "pinnochio";
+  my.vars.host = {
+    server = true;
+    hostName = "pinnochio";
+  };
 
   my.services.ssh = {
     enable = true;
     enableRootKeyLogin = false;
   };
-
-  my.vars.user.sshAuthorizedKeys = [
-    config.my.vars.sshKey
-  ];
 
   my.services.postgres = {
     enable = true;

@@ -53,6 +53,12 @@ sudo nixos-rebuild switch --flake path:///path/to/flake#wsl
 or
 
 ```sh
+nixos-rebuild switch --flake path:///home/jjustin/dotfiles#server --target-host root@<server host>
+```
+
+or
+
+```sh
 cd dotfiles
 scp -r . jjustin@<rpi host ip>:/home/jjustin/dotfiles
 ssh jjustin@<rpi host ip>
@@ -70,3 +76,24 @@ darwin-rebuild switch --flake path:///path/to/flake#work
 ### Uninstall MacOS
 
 See: [Determinate Systems nix uninstall](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#uninstalling)
+
+## Cloudflare
+
+### How to get credentials
+
+Enter a shell with cloudflared installed
+
+```sh
+nix-shell -p cloudflared
+```
+
+Login and create a tunnel
+
+```sh
+cloudflared tunnel login
+cloudflared tunnel create home
+```
+
+### DNS
+
+Go to cloudflare portal under `<Your domain> -> DNS -> Records` and add a CNAME entry pointing to `<your tunnel id>.cfargotunnel.com`

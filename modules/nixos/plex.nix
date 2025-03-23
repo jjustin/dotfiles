@@ -42,5 +42,10 @@ in
       # Start plex when on AC
       ''SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.systemd}/bin/systemctl start plex.service"''
     ];
+
+    my.services.caddy.services.plex = {
+      port = 32400;
+      public = true;
+    };
   };
 }
