@@ -46,6 +46,10 @@
     enableRootKeyLogin = true;
   };
 
+  my.services.docker = {
+    enable = true;
+  };
+
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [

@@ -19,6 +19,7 @@
 
   wsl.enable = true;
   wsl.defaultUser = config.my.vars.user.username;
+  wsl.docker-desktop.enable = true;
 
   # VSCode server fix: https://nixos.wiki/wiki/Visual_Studio_Code#nix-ld
   programs.nix-ld.enable = true;

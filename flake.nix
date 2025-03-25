@@ -118,6 +118,7 @@
                 linuxModules = [
                   ./modules/nixos/caddy.nix
                   ./modules/nixos/caps2esc.nix
+                  ./modules/nixos/docker.nix
                   ./modules/nixos/immich.nix
                   ./modules/nixos/localization.nix
                   ./modules/nixos/nvidia.nix
