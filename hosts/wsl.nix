@@ -15,7 +15,7 @@
     inputs.nix-wsl.nixosModules.wsl
   ];
 
-  my.vars.host.hostName = "isaac";
+  my.vars.host.hostName = "sephiroth";
 
   wsl.enable = true;
   wsl.defaultUser = config.my.vars.user.username;
