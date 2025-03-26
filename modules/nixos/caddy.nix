@@ -44,6 +44,14 @@ in
               '';
               default = false;
             };
+
+            additionalReverseProxyOptions = mkOption {
+              type = types.lines;
+              description = ''
+                Additional lines to include in the reverse proxy block.
+              '';
+              default = "";
+            };
           };
         })
       );
@@ -108,7 +116,16 @@ in
             {
               "${key}.${optLocalSubpath}${config.my.private.cloudflare.tunnelHostname}${port}" = {
                 extraConfig = ''
-                  reverse_proxy localhost:${toString serviceCfg.port}
+                  reverse_proxy localhost:${toString serviceCfg.port} ${
+                    if serviceCfg.additionalReverseProxyOptions != "" then
+                      ''
+                        {
+                          ${serviceCfg.additionalReverseProxyOptions}
+                        }
+                      ''
+                    else
+                      ""
+                  }
 
                   tls {
                     dns cloudflare {

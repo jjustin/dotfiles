@@ -50,6 +50,8 @@
     enable = true;
   };
 
+  my.services.syncthing.enable = true;
+
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [

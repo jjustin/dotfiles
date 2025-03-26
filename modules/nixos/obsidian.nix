@@ -35,11 +35,6 @@ in
       "electron-25.9.0"
     ];
 
-    services.syncthing = {
-      enable = true;
-      user = "jjustin";
-      dataDir = "/home/jjustin/Documents"; # Default folder for new synced folders
-      configDir = "/home/jjustin/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
-    };
+    my.services.syncthing.enable = true;
   };
 }
