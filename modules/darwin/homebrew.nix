@@ -61,6 +61,7 @@
         "firefox"
         "ghostty"
         "hex-fiend"
+        "numi"
         "obsidian"
         "orbstack"
         "postman"
