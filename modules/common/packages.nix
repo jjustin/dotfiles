@@ -18,7 +18,6 @@
       dig
       direnv
       dive
-      gcc
       git
       gitlab-ci-ls
       go_1_24
@@ -40,7 +39,7 @@
       ngrok
       nil # nix LSP
       nixfmt-rfc-style
-      nodejs_20
+      nodejs_22
       postgresql
       python3
       rustup

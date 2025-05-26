@@ -124,6 +124,7 @@
                   ./modules/nixos/nvidia.nix
                   ./modules/nixos/networking.nix
                   ./modules/nixos/obsidian.nix
+                  ./modules/nixos/packages.nix
                   ./modules/nixos/plex.nix
                   ./modules/nixos/qbittorrent.nix
                   ./modules/nixos/ssh.nix
