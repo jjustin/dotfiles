@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs dependencies.
@@ -28,10 +28,6 @@
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nix-darwin.follows = "nix-darwin";
-      };
     };
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -161,6 +157,8 @@
                         home = config.my.vars.user.homeDirectory;
                       };
 
+                      system.primaryUser = config.my.vars.user.username;
+
                       system.stateVersion = 5;
                     }
                   )
@@ -172,22 +170,22 @@
     {
       nixosConfigurations = {
         "rpi" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-module = home-manager.nixosModule;
+          home-manager-module = home-manager.nixosModules.home-manager;
           system = "aarch64-linux";
           conf = ./hosts/rpi.nix;
         });
         "gaming" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-module = home-manager.nixosModule;
+          home-manager-module = home-manager.nixosModules.home-manager;
           system = "x86_64-linux";
           conf = ./hosts/gaming.nix;
         });
         "server" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-module = home-manager.nixosModule;
+          home-manager-module = home-manager.nixosModules.home-manager;
           system = "x86_64-linux";
           conf = ./hosts/server.nix;
         });
         "wsl" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-module = home-manager.nixosModule;
+          home-manager-module = home-manager.nixosModules.home-manager;
           system = "x86_64-linux";
           conf = ./hosts/wsl.nix;
         });
@@ -195,7 +193,7 @@
 
       darwinConfigurations = {
         "work" = nix-darwin.lib.darwinSystem (getConfiguration {
-          home-manager-module = home-manager.darwinModule;
+          home-manager-module = home-manager.darwinModules.home-manager;
           system = "aarch64-darwin";
           conf = ./hosts/work.nix;
         });
