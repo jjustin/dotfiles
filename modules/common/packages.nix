@@ -42,6 +42,7 @@
       nodejs_22
       postgresql
       python3
+      restish
       rustup
       sshuttle
       usage # autocompletion for mise

@@ -52,6 +52,9 @@
 
       # Homebrew
       export PATH=/opt/homebrew/bin:$PATH
+
+      # Restish autocomplete
+      source <(restish completion zsh); compdef _restish restish
     '';
 
     oh-my-zsh = {
