@@ -55,6 +55,9 @@
 
       # Restish autocomplete
       source <(restish completion zsh); compdef _restish restish
+
+      # git-auto-fetch oh-my-zsh plugin
+      GIT_AUTO_FETCH_INTERVAL=1200 # in seconds
     '';
 
     oh-my-zsh = {
@@ -62,6 +65,7 @@
       plugins = [
         "aws"
         "git"
+        "git-auto-fetch"
         "mise"
         "z"
       ];
