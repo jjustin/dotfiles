@@ -34,6 +34,7 @@
       kubernetes-helm
       minio-client
       mise
+      natscli
       neofetch
       neovim
       ngrok
