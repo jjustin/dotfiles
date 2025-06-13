@@ -55,7 +55,6 @@
         "beekeeper-studio"
         "bitwarden"
         "brave-browser"
-        "bruno"
         "chromium"
         "discord"
         "drawio"
