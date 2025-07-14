@@ -97,3 +97,11 @@ cloudflared tunnel create home
 ### DNS
 
 Go to cloudflare portal under `<Your domain> -> DNS -> Records` and add a CNAME entry pointing to `<your tunnel id>.cfargotunnel.com`
+
+## SMB
+
+A password for SMB sharing has to be added manually with:
+
+```sh
+sudo smbpasswd -a <username>
+```

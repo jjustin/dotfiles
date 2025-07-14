@@ -50,6 +50,10 @@
     enable = true;
   };
 
+  my.services.smb = {
+    enable = true;
+  };
+
   my.services.syncthing.enable = true;
 
   programs.zsh.enable = true;

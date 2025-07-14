@@ -123,6 +123,7 @@
                   ./modules/nixos/packages.nix
                   ./modules/nixos/plex.nix
                   ./modules/nixos/qbittorrent.nix
+                  ./modules/nixos/smb.nix
                   ./modules/nixos/ssh.nix
                   ./modules/nixos/syncthing.nix
                   ./modules/nixos/udev.nix

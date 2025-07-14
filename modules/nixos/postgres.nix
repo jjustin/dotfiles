@@ -12,7 +12,6 @@ in
 {
   options.my.services.postgres = {
     enable = mkEnableOption "postgres";
-    enableRootKeyLogin = mkEnableOption "root key login";
   };
 
   config = lib.mkIf cfg.enable {
