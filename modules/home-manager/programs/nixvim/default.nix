@@ -17,6 +17,11 @@
 
       colorschemes.gruvbox.enable = true;
 
+      diagnostic.settings = {
+        # NOTE: Opt-in with 0.11
+        virtual_lines = true; # for lsp-lines
+      };
+
       plugins = {
         lualine.enable = true;
 
@@ -63,7 +68,18 @@
           };
         };
 
-        telescope.enable = true;
+        hardtime.enable = true; # Bad habit notifications
+
+        # TODO: figure this out.
+        # LSP-enabled preview
+        goto-preview = {
+          enable = true;
+        };
+
+        # in-line LSP error reporting
+        lsp-lines.enable = true;
+
+        telescope.enable = true; # Fuzzy search
         web-devicons.enable = true; # Needed by telescope
         oil.enable = true;
         treesitter.enable = true;
