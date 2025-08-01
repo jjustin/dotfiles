@@ -53,6 +53,11 @@
       whois
       watch
     ]
+    ++ lib.optionals config.my.vars.host.work [
+      (google-cloud-sdk.withExtraComponents [
+        google-cloud-sdk.components.gke-gcloud-auth-plugin
+      ])
+    ]
     ++ lib.optionals config.my.vars.host.personal [
       rar
     ];
