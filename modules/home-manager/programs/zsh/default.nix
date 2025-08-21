@@ -15,6 +15,11 @@
   programs.zsh = {
     enable = true;
 
+    shellAliases = {
+      "ll" = "ls -lh";
+      "la" = "ls -lAh";
+    };
+
     autosuggestion.enable = true;
     syntaxHighlighting = {
       enable = true;
