@@ -50,40 +50,39 @@
     # See https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.global.autoUpdate
     global.autoUpdate = false;
 
-    casks =
-      [
-        "beekeeper-studio"
-        "bitwarden"
-        "brave-browser"
-        "chromium"
-        "discord"
-        "drawio"
-        "firefox"
-        "ghostty"
-        "hex-fiend"
-        "numi"
-        "obsidian"
-        "orbstack"
-        "postman"
-        "rectangle"
-        "redis-insight"
-        "screen-studio"
-        "signal"
-        "spotify"
-        "syncthing"
-        "visual-studio-code"
-        "vlc"
-      ]
-      ++ lib.optionals config.my.vars.host.work [
-        "insomnia"
-        "slack"
-      ]
-      ++ lib.optionals config.my.vars.host.personal [
-        "caffeine"
-        "calibre"
-        "obs"
-        "qbittorrent"
-        "whisky"
-      ];
+    casks = [
+      "beekeeper-studio"
+      "bitwarden"
+      "brave-browser"
+      "chromium"
+      "discord"
+      "drawio"
+      "firefox"
+      "ghostty"
+      "hex-fiend"
+      "numi"
+      "obsidian"
+      "orbstack"
+      "postman"
+      "rectangle"
+      "redis-insight"
+      "screen-studio"
+      "signal"
+      "spotify"
+      "syncthing-app"
+      "visual-studio-code"
+      "vlc"
+    ]
+    ++ lib.optionals config.my.vars.host.work [
+      "insomnia"
+      "slack"
+    ]
+    ++ lib.optionals config.my.vars.host.personal [
+      "caffeine"
+      "calibre"
+      "obs"
+      "qbittorrent"
+      "whisky"
+    ];
   };
 }
