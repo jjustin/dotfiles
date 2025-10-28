@@ -92,7 +92,7 @@ in
             ## This approach to versioning might not be the best but it works until a release of this plugin is made
             "github.com/caddy-dns/cloudflare@v0.0.0-${cfLastModifiedDate}-${cfRev}"
           ];
-        hash = "sha256-3nvVGW+ZHLxQxc1VCc/oTzCLZPBKgw4mhn+O3IoyiSs=";
+        hash = "sha256-a4qlV+gyjhlhT2MPrSB5iH+Hcv3baBKxpzwZLnt19yc=";
       };
 
       virtualHosts = mkMerge (
