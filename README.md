@@ -77,26 +77,20 @@ darwin-rebuild switch --flake path:///path/to/flake#work
 
 See: [Determinate Systems nix uninstall](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#uninstalling)
 
-## Cloudflare
+## Atuin
 
-### How to get credentials
-
-Enter a shell with cloudflared installed
+Login
 
 ```sh
-nix-shell -p cloudflared
+atuin login
 ```
 
-Login and create a tunnel
+To backfill your existing shell history run
 
 ```sh
-cloudflared tunnel login
-cloudflared tunnel create home
+atuin import auto
+atuin sync # Optionally sync your history to the server
 ```
-
-### DNS
-
-Go to cloudflare portal under `<Your domain> -> DNS -> Records` and add a CNAME entry pointing to `<your tunnel id>.cfargotunnel.com`
 
 ## SMB
 

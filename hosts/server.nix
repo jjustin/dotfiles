@@ -26,21 +26,6 @@
     wakeOnLanInterface = "enp3s0f0";
   };
 
-  my.services.caddy = {
-    enable = true;
-    openFirewall = true;
-  };
-
-
-  my.services.plex = {
-    enable = true;
-    confirmUnfree = true;
-  };
-
-  my.services.qbittorrent = {
-    enable = true;
-  };
-
   my.services.ssh = {
     enable = true;
     enableRootKeyLogin = true;

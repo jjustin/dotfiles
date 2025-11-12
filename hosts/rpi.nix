@@ -36,8 +36,4 @@
     enable = true;
     enableRootKeyLogin = false;
   };
-
-  my.services.postgres = {
-    enable = true;
-  };
 }

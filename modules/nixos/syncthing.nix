@@ -26,10 +26,5 @@ in
       configDir = "/home/${config.my.vars.user.username}/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
       guiAddress = "localhost:${toString cfg.port}";
     };
-
-    my.services.caddy.services.sync = {
-      port = cfg.port;
-      additionalReverseProxyOptions = "header_up Host {upstream_hostport}";
-    };
   };
 }

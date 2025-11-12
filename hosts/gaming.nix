@@ -8,7 +8,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./v-hardware.nix
+    ./gaming-hardware.nix
   ];
 
   # Bootloader.

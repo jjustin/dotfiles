@@ -17,22 +17,6 @@
         "type": "github"
       }
     },
-    "caddy-cloudflare": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1753396520,
-        "narHash": "sha256-ZepM8ACTkRvvNyF3FzfsnkxEREaGspZUFjlnFg44qM8=",
-        "owner": "caddy-dns",
-        "repo": "cloudflare",
-        "rev": "f589a18c0f5d2ce871cc907c0567b2f8ef20c4c0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "caddy-dns",
-        "repo": "cloudflare",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -308,7 +292,6 @@
     },
     "root": {
       "inputs": {
-        "caddy-cloudflare": "caddy-cloudflare",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",

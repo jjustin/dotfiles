@@ -8,6 +8,7 @@
 }:
 {
   imports = [
+    ./atuin.nix
     ./git.nix
     ./ghostty.nix
     ./nixvim
