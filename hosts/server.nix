@@ -39,7 +39,11 @@
     enable = true;
   };
 
-  my.services.syncthing.enable = true;
+  my.services.syncthing = {
+    enable = true;
+    openFirewall = true;
+    host = "172.17.0.1"; # expose to docker
+  };
 
   programs.zsh.enable = true;
 
