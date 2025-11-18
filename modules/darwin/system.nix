@@ -26,6 +26,7 @@ in
           "/Applications/Brave Browser.app"
           "/Applications/Visual Studio Code.app"
           "/Applications/Ghostty.app"
+          "/Applications/Bruno.app"
           "/Applications/Obsidian.app"
           (ifWork "/Applications/Slack.app")
           "/Applications/Discord.app"
