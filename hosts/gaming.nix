@@ -17,11 +17,6 @@
 
   my.vars.host.hostName = "kratos";
 
-  my.nvidia = {
-    enable = true;
-    confirmUnfree = true;
-  };
-
   my.obsidian = {
     enable = true;
     confirmUnfree = true;
@@ -39,6 +34,7 @@
     (lib.getName pkgs.steam)
     ("steam-original")
     ("steam-run")
+    ("steam-unwrapped")
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -49,7 +45,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -61,7 +57,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -89,8 +85,8 @@
     vesktop
     discord
     firefox
-    gnome.gnome-calculator
-    gnome.gnome-disk-utility
+    gnome-calculator
+    gnome-disk-utility
     obsidian
     qbittorrent
     signal-desktop

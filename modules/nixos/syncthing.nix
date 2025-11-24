@@ -18,7 +18,7 @@ in
     };
 
     host = mkOption {
-      type = types.string;
+      type = types.str;
       default = "127.0.0.1";
     };
 
