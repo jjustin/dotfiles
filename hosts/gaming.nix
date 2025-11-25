@@ -75,7 +75,10 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    protontricks.enable = true;
+  };
   programs.zsh.enable = true;
   programs.dconf.enable = true;
 
@@ -85,6 +88,7 @@
     vesktop
     discord
     firefox
+    ghostty
     gnome-calculator
     gnome-disk-utility
     obsidian
