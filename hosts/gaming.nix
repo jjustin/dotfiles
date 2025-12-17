@@ -98,6 +98,11 @@
     vscode
     vlc
 
+    libreoffice-qt
+    hunspell # libreoffice spellchecker
+    hunspellDicts.en-us
+    # hunspellDicts.sl_SI // doesn't exist yet
+
     usbutils # lsusb
     wineWowPackages.stable
   ];
