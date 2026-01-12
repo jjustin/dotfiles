@@ -16,6 +16,7 @@
       dig
       git
       gnupg
+      gnumake
       htop
       jq
       jwt-cli
@@ -27,6 +28,7 @@
       nil # nix LSP
       nixfmt-rfc-style
       usage # autocompletion for mise
+      uv # use for python. See ../nixos/packages.nix if you need dynamic libraries installed.
       tcpdump
       tig
       wget
