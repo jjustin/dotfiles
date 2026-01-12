@@ -82,6 +82,8 @@
   programs.zsh.enable = true;
   programs.dconf.enable = true;
 
+  services.pcscd.enable = true; # yubikey
+
   environment.systemPackages = with pkgs; [
     brave
     # https://nixos.wiki/wiki/Discord#Screensharing_with_audio_on_wayland
@@ -97,6 +99,7 @@
     spotify
     vscode
     vlc
+    yubioath-flutter
 
     libreoffice-qt
     hunspell # libreoffice spellchecker
