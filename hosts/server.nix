@@ -54,6 +54,11 @@
 
   programs.zsh.enable = true;
 
+  networking.firewall = {
+    allowedTCPPorts = [ 6881 ]; # used by running docker service
+    allowedUDPPorts = [ 6881 ]; # used by running docker service
+  };
+
   environment.systemPackages = with pkgs; [
     usbutils # lsusb
     ghostty.terminfo
