@@ -72,9 +72,7 @@
             conf
             ./variables.nix
             ./private
-            ./modules/common/misc.nix
-            ./modules/common/programs.nix
-            ./modules/common/packages.nix
+            ./modules/common
 
             (
               { config, lib, ... }:
@@ -103,59 +101,15 @@
               }
             )
           ]
-          ++ (
-            let
-              linuxModules = [
-                ./modules/nixos/caps2esc.nix
-                ./modules/nixos/docker.nix
-                ./modules/nixos/localization.nix
-                ./modules/nixos/nvidia.nix
-                ./modules/nixos/networking.nix
-                ./modules/nixos/obsidian.nix
-                ./modules/nixos/packages.nix
-                ./modules/nixos/smb.nix
-                ./modules/nixos/ssh.nix
-                ./modules/nixos/syncthing.nix
-                ./modules/nixos/udev.nix
-                ./modules/nixos/users.nix
-                {
-                  # This value determines the NixOS release from which the default
-                  # settings for stateful data, like file locations and database versions
-                  # on your system were taken. It‘s perfectly fine and recommended to leave
-                  # this value at the release version of the first install of this system.
-                  # Before changing this value read the documentation for this option
-                  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-                  system.stateVersion = "23.11"; # Did you read the comment?
-                }
-              ];
-            in
-            {
-              "x86_64-linux" = linuxModules;
-              "aarch64-linux" = linuxModules;
+          ++ ({
+            "x86_64-linux" = [ ./modules/nixos ];
+            "aarch64-linux" = [ ./modules/nixos ];
 
-              "aarch64-darwin" = [
-                inputs.nix-homebrew.darwinModules.nix-homebrew
-                ./modules/darwin/caps2esc.nix
-                ./modules/darwin/homebrew.nix
-                ./modules/darwin/packages.nix
-                ./modules/darwin/system.nix
-                (
-                  { config, ... }:
-                  {
-                    my.vars.user.homeDirectory = "/Users/${config.my.vars.user.username}";
-                    users.users.${config.my.vars.user.username} = {
-                      name = config.my.vars.user.username;
-                      home = config.my.vars.user.homeDirectory;
-                    };
-
-                    system.primaryUser = config.my.vars.user.username;
-
-                    system.stateVersion = 5;
-                  }
-                )
-              ];
-            }
-          ).${system};
+            "aarch64-darwin" = [
+              inputs.nix-homebrew.darwinModules.nix-homebrew
+              ./modules/darwin
+            ];
+          }).${system};
         };
     in
     {
