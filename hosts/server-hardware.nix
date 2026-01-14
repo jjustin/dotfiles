@@ -64,4 +64,19 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Brother_DCP-J100";
+        location = "Home";
+        deviceUri = "usb://Brother/DCP-J100?serial=BROA6H477042";
+        model = "brother_dcpj100_printer_en.ppd";
+        ppdOptions = {
+          PageSize = "A4";
+        };
+      }
+    ];
+    ensureDefaultPrinter = "Brother_DCP-J100";
+  };
 }

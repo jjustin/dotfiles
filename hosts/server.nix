@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  printerDriver = (pkgs.callPackage ../derivations/dcpj100.nix { });
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -51,6 +54,25 @@
     openFirewall = true;
     host = "172.17.0.1"; # expose to docker
   };
+
+  my.services.printing = {
+    enable = true;
+    openFirewall = true;
+    sharing = true;
+    drivers = [
+      printerDriver.driver
+      printerDriver.cupswrapper
+    ];
+  };
+  my.vars.unfreePackages = [
+    (lib.getName printerDriver.driver)
+    (lib.getName printerDriver.cupswrapper)
+  ];
+  # Workaround for brother binary requiring inf files at specific location.
+  # TODO: Maybe this could be somehow achieved in the printer driver's derivation.
+  systemd.tmpfiles.rules = [
+    "L /opt/brother/Printers/dcpj100/inf - - - - ${printerDriver.driver}/opt/brother/Printers/dcpj100/inf"
+  ];
 
   programs.zsh.enable = true;
 

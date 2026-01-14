@@ -15,6 +15,7 @@
     ./nvidia.nix
     ./obsidian.nix
     ./packages.nix
+    ./printing.nix
     ./smb.nix
     ./ssh.nix
     ./syncthing.nix
