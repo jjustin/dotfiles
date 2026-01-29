@@ -50,6 +50,10 @@
     # See https://daiderd.com/nix-darwin/manual/index.html#opt-homebrew.global.autoUpdate
     global.autoUpdate = false;
 
+    brews = [
+      "mole"
+    ];
+
     casks = [
       "beekeeper-studio"
       "bitwarden"
