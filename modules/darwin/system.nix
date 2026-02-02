@@ -12,6 +12,12 @@ in
       ".GlobalPreferences"."com.apple.mouse.scaling" = 0.875; # Set tracking speed
       CustomSystemPreferences.NSGlobalDomain."com.apple.mouse.linear" = true; # Disable pointer acceleration, this once can probably be moved to built-in property (like the aboves): https://github.com/LnL7/nix-darwin/pull/1037
 
+      controlcenter = {
+        BatteryShowPercentage = true;
+        Bluetooth = true;
+        Sound = true;
+      };
+
       dock = {
         show-recents = false;
         autohide = true;
@@ -33,22 +39,38 @@ in
           "/Applications/Signal.app"
           "/Applications/Spotify.app"
           "/System/Applications/Calendar.app"
-          (ifPersonal "/System/Applications/Photos.app")
           "/System/Applications/System Settings.app"
           (ifPersonal "/Applications/Whisky.app")
+          (ifPersonal "/Applications/Steam.app")
         ];
+        showAppExposeGestureEnabled = true; # 3 or 4-finger swipe up
+        showDesktopGestureEnabled = true; # 4-finger spread to show desktop
+        showLaunchpadGestureEnabled = true; # 4-finger pinch to show desktop
       };
 
       finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        FXPreferredViewStyle = "clmv"; # Column view
+        _FXEnableColumnAutoSizing = true;
         ShowPathbar = true;
         ShowStatusBar = true;
+      };
+
+      screensaver = {
+        askForPassword = true;
+        askForPasswordDelay = 0;
       };
 
       trackpad = {
         ActuationStrength = 0; # silent clicking
         FirstClickThreshold = 0; # light clicking
-
       };
     };
+  };
+
+  power.sleep = {
+    computer = 30; # minutes
+    display = 10; # minutes
   };
 }

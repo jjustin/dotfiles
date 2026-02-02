@@ -87,6 +87,7 @@
       "caffeine"
       "calibre"
       "obs"
+      "steam"
       "qbittorrent"
       "whisky"
     ];

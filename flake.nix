@@ -137,6 +137,11 @@
       };
 
       darwinConfigurations = {
+        "personal-mac" = nix-darwin.lib.darwinSystem (getConfiguration {
+          home-manager-module = home-manager.darwinModules.home-manager;
+          system = "aarch64-darwin";
+          conf = ./hosts/personal-mac.nix;
+        });
         "work" = nix-darwin.lib.darwinSystem (getConfiguration {
           home-manager-module = home-manager.darwinModules.home-manager;
           system = "aarch64-darwin";

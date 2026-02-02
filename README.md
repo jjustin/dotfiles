@@ -9,16 +9,13 @@ See `private/options.nix` for it's structure.
 
 ### MacOS
 
-1. Install nix
+1. Install nix via Lix. `darwin-nix` will take over the installation after the first flake install.
 
     ```sh
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+    curl -sSf -L https://install.lix.systems/lix | sh -s -- install
     ```
 
-    Select "No" when asked to install Determinate Nix.
-    Let `darwin-nix` handle the installed nix instance.
-
-    See: [Determinate Systems nix install](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#install-nix)
+    See: [Lix](https://lix.systems/install/#on-any-other-linuxmacos-system)
 
 1. Build the system
 
@@ -75,7 +72,7 @@ darwin-rebuild switch --flake path:///path/to/flake#work
 
 ### Uninstall MacOS
 
-See: [Determinate Systems nix uninstall](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#uninstalling)
+See: [Lix](https://lix.systems/install/#on-any-other-linuxmacos-system)
 
 ## Atuin
 
