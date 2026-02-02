@@ -26,7 +26,7 @@
       neovim
       ngrok
       nil # nix LSP
-      nixfmt-rfc-style
+      nixfmt
       usage # autocompletion for mise
       uv # use for python. See ../nixos/packages.nix if you need dynamic libraries installed.
       tcpdump
