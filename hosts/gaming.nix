@@ -22,6 +22,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   my.vars.host.hostName = "kratos";
+  my.vars.host.personal = true;
 
   my.obsidian = {
     enable = true;
@@ -41,6 +42,7 @@
     ("steam-original")
     ("steam-run")
     ("steam-unwrapped")
+    (lib.getName pkgs.rar)
   ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
