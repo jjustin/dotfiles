@@ -11,6 +11,12 @@
     ./gaming-hardware.nix
   ];
 
+  nix.gc = {
+    automatic = true;
+    persistent = true;
+    options = "--delete-older-than 10d";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
