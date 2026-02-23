@@ -30,7 +30,7 @@ in
         # Flatten because ifWork and ifPersonal produce a list
         persistent-apps = lib.lists.flatten [
           "/Applications/Brave Browser.app"
-          "/Applications/Visual Studio Code.app"
+          "/Applications/Zed.app"
           "/Applications/Ghostty.app"
           "/Applications/Bruno.app"
           "/Applications/Obsidian.app"

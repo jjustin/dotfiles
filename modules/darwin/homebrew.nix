@@ -78,6 +78,7 @@
       "syncthing-app"
       "visual-studio-code"
       "vlc"
+      "zed"
     ]
     ++ lib.optionals config.my.vars.host.work [
       "insomnia"
