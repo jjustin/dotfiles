@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 
@@ -108,6 +109,8 @@
     vscode
     vlc
     yubioath-flutter
+    zed-editor
+    inputs.zen-browser.packages.x86_64-linux.default
 
     libreoffice-qt
     hunspell # libreoffice spellchecker
