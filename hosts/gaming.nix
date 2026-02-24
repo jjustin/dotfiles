@@ -87,6 +87,9 @@
   programs.steam = {
     enable = true;
     protontricks.enable = true;
+    extraCompatPackages = [
+      pkgs.proton-ge-bin
+    ];
   };
   programs.zsh.enable = true;
   programs.dconf.enable = true;
