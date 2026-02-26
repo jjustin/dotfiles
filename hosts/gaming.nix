@@ -106,6 +106,7 @@
     gnome-calculator
     gnome-disk-utility
     obsidian
+    oversteer # steering wheel controls
     qbittorrent
     signal-desktop
     spotify
