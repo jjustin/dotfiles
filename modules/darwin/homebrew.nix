@@ -79,6 +79,7 @@
       "visual-studio-code"
       "vlc"
       "zed"
+      "zen"
     ]
     ++ lib.optionals config.my.vars.host.work [
       "insomnia"
