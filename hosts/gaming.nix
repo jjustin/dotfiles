@@ -29,6 +29,10 @@
     enable = true;
     confirmUnfree = true;
   };
+  
+  my.services.ssh = {
+    enableAgent = true;
+  };
 
   my.services.caps2esc = {
     enable = true;

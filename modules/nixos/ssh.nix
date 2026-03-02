@@ -11,17 +11,23 @@ let
 in
 {
   options.my.services.ssh = {
-    enable = mkEnableOption "ssh";
+    enableAgent = mkEnableOption "ssh-agent";
+    enableServer = mkEnableOption "ssh-server";
     enableRootKeyLogin = mkEnableOption "root key login";
   };
 
-  config = lib.mkIf cfg.enable {
-    services.openssh.enable = true;
-
-    services.openssh.settings.PasswordAuthentication = false;
-    services.openssh.settings.PermitRootLogin = "without-password";
+  config = {
+    services.openssh = lib.mkIf cfg.enableServer {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "without-password";
+      };
+    };
+  
     users.users.root = lib.mkIf cfg.enableRootKeyLogin {
       openssh.authorizedKeys.keys = config.my.vars.user.sshAuthorizedKeys;
     };
-  };
-}
+  
+    programs.ssh.startAgent = cfg.enableAgent;
+  };}

@@ -30,7 +30,7 @@ in
   };
 
   my.services.ssh = {
-    enable = true;
+    enableServer = true;
     enableRootKeyLogin = true;
   };
 
