@@ -42,6 +42,8 @@
       flake = false;
     };
 
+    darwin-custom-icons.url = "github:ryanccn/nix-darwin-custom-icons";
+
     zsh-aws-vault = {
       url = "github:blimmer/zsh-aws-vault";
       flake = false;
@@ -63,6 +65,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      darwin-custom-icons,
       ...
     }@inputs:
     let
@@ -116,6 +119,7 @@
 
             "aarch64-darwin" = [
               inputs.nix-homebrew.darwinModules.nix-homebrew
+              darwin-custom-icons.darwinModules.default
               ./modules/darwin
             ];
           }).${system};

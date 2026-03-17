@@ -22,7 +22,6 @@
       jwt-cli
       minio-client
       mise
-      neofetch
       neovim
       ngrok
       nil # nix LSP

@@ -37,6 +37,7 @@ in
           (ifWork "/Applications/Slack.app")
           "/Applications/Discord.app"
           "/Applications/Signal.app"
+          "/Applications/Feishin.app"
           "/Applications/Spotify.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/System Settings.app"
@@ -72,5 +73,15 @@ in
   power.sleep = {
     computer = 30; # minutes
     display = 10; # minutes
+  };
+
+  environment.customIcons = {
+    enable = true;
+    icons = [
+      {
+        path = "/Applications/Zed.app";
+        icon = ./icons/zed.png;
+      }
+    ];
   };
 }
