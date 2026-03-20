@@ -1,15 +1,11 @@
 {
   pkgs,
   lib,
-  config,
+  my,
   ...
 }:
 {
-  my.vars.unfreePackages = [
-    (lib.getName pkgs.ngrok)
-  ];
-
-  environment.systemPackages =
+  home.packages =
     with pkgs;
     [
       dig
@@ -22,7 +18,7 @@
       minio-client
       mise
       neovim
-      ngrok
+      # ngrok
       nil # nix LSP
       nixfmt
       usage # autocompletion for mise
@@ -33,7 +29,7 @@
       whois
       watch
     ]
-    ++ lib.optionals config.my.vars.host.work [
+    ++ lib.optionals my.vars.host.work [
       aws-vault
       awscli2
       direnv
@@ -58,7 +54,7 @@
       rustup
       sshuttle
     ]
-    ++ lib.optionals config.my.vars.host.personal [
+    ++ lib.optionals my.vars.host.personal [
       rar
     ];
 }

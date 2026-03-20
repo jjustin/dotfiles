@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
 
+  home.sessionVariables.EDITOR = "nvim";
+
   programs = {
     nixvim = {
       # https://nix-community.github.io/nixvim/NeovimOptions/index.html

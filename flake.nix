@@ -84,7 +84,6 @@
             conf
             ./variables.nix
             ./private
-            ./modules/common
 
             (
               { config, lib, ... }:
