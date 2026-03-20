@@ -65,7 +65,6 @@
       "firefox"
       "ghostty"
       "hex-fiend"
-      "meetingbar"
       "numi"
       "obsidian"
       "orbstack"
@@ -82,10 +81,12 @@
       "zen"
     ]
     ++ lib.optionals config.my.vars.host.work [
+      "meetingbar"
       "insomnia"
       "slack"
     ]
     ++ lib.optionals config.my.vars.host.personal [
+      "balenaetcher"
       "caffeine"
       "calibre"
       "obs"
