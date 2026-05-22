@@ -18,6 +18,7 @@
     shellAliases = {
       "ll" = "ls -lh";
       "la" = "ls -lAh";
+      "nukeport" = "f() { lsof -ti tcp:$1 | xargs -r kill -9; }; f";
     };
 
     autosuggestion.enable = true;
