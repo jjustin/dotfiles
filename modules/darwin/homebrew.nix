@@ -60,6 +60,7 @@
       "brave-browser"
       "bruno"
       "chromium"
+      "darktable"
       "discord"
       "drawio"
       "firefox"

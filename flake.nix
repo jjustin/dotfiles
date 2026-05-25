@@ -94,8 +94,6 @@
                   "flakes"
                 ];
 
-                nixpkgs.overlays = import ./overlays/overlays.nix;
-
                 nixpkgs.config.allowUnfreePredicate =
                   pkg: builtins.elem (lib.getName pkg) config.my.vars.unfreePackages;
 

@@ -13,6 +13,7 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
+    ./fonts.nix
     ./packages.nix
     ./programs
   ];
