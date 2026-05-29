@@ -38,7 +38,7 @@
         google-cloud-sdk.components.gke-gcloud-auth-plugin
       ])
       gitlab-ci-ls
-      go_1_24
+      go
       go-task # taskfile
       hadolint # docker lint
       httpie
