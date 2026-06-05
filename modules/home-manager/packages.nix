@@ -17,7 +17,7 @@
       jwt-cli
       minio-client
       mise
-      neovim
+      # neovim # installed via nixvim, installing it here breaks the nixvim modules
       # ngrok
       nil # nix LSP
       nixfmt
