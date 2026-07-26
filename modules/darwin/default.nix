@@ -8,8 +8,6 @@
 }:
 {
   imports = [
-    ./caps2esc.nix
-    ./homebrew.nix
     ./packages.nix
     ./system.nix
   ];

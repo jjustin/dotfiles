@@ -11,6 +11,5 @@
     hostName = "hornet";
   };
 
-  my.services.caps2esc.enable = true;
   my.vars.unfreePackages = [ (lib.getName pkgs.rar) ];
 }

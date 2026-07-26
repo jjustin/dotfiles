@@ -20,4 +20,12 @@
       enable = true;
     };
   };
+
+  services.macos-remap-keys = {
+    enable = true;
+    keyboard = {
+      Capslock = "Escape";
+      NonUSBackslash = "GraveAccent";
+    };
+  };
 }

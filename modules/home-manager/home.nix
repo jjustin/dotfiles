@@ -13,7 +13,9 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
+    inputs.homebrew.homeManagerModules.default
     ./fonts.nix
+    ./homebrew.nix
     ./packages.nix
     ./programs
   ];

@@ -23,20 +23,9 @@
       url = "github:nix-community/nixvim";
     };
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
+    homebrew = {
+      url = "github:koalalorenzo/home-manager-brew";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin-custom-icons.url = "github:ryanccn/nix-darwin-custom-icons";
@@ -112,7 +101,6 @@
             "aarch64-linux" = [ ./modules/nixos ];
 
             "aarch64-darwin" = [
-              inputs.nix-homebrew.darwinModules.nix-homebrew
               darwin-custom-icons.darwinModules.default
               ./modules/darwin
             ];

@@ -10,6 +10,4 @@
     work = true;
     hostName = "mccree";
   };
-
-  my.services.caps2esc.enable = true;
 }
