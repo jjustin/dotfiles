@@ -75,11 +75,6 @@
         };
       };
 
-      url = {
-        "ssh://git@github.com/".insteadOf = "https://github.com/";
-        "ssh://git@gitlab.com/".insteadOf = "https://gitlab.com/";
-      };
-
       branch.sort = "-committerdate";
       commit.gpgsign = true;
       pull.ff = "only";

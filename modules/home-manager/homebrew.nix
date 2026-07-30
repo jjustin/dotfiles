@@ -8,16 +8,7 @@
 {
   # https://github.com/koalalorenzo/home-manager-brew#usage
   homebrew = {
-    taps = [
-      {
-        name = "homebrew/core";
-        repo = "git@github.com/homebrew/homebrew-core.git";
-      }
-      {
-        name = "homebrew/cask";
-        repo = "git@github.com/homebrew/homebrew-cask.git";
-      }
-    ];
+    taps = [ ];
 
     formulae = [
       "mole"
