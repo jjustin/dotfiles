@@ -41,7 +41,6 @@
 
   my.vars.unfreePackages = [
     (lib.getName pkgs.discord)
-    (lib.getName pkgs.spotify)
     (lib.getName pkgs.vscode)
     (lib.getName pkgs.steam)
     ("steam-original")
@@ -113,7 +112,6 @@
     oversteer # steering wheel controls
     qbittorrent
     signal-desktop
-    spotify
     vscode
     vlc
     yubioath-flutter

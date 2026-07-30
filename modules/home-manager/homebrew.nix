@@ -34,7 +34,6 @@
       "redis-insight"
       "screen-studio"
       "signal"
-      "spotify"
       "syncthing-app"
       "visual-studio-code"
       "vlc"

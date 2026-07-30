@@ -38,7 +38,6 @@ in
           "/Applications/Discord.app"
           "/Applications/Signal.app"
           "/Applications/Feishin.app"
-          "/Applications/Spotify.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/System Settings.app"
           (ifPersonal "/Applications/Whisky.app")
