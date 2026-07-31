@@ -59,6 +59,9 @@
       # Homebrew
       export PATH=/opt/homebrew/bin:$PATH
 
+      # Go
+      export PATH=~/go/bin:$PATH
+
       # Restish autocomplete
       source <(restish completion zsh); compdef _restish restish
     '';

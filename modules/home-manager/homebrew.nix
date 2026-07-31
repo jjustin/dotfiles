@@ -12,6 +12,9 @@
 
     formulae = [
       "mole"
+    ]
+    ++ lib.optionals my.vars.host.work [
+      "graphviz" # for infrastructure-diagram-mcp-server
     ];
 
     casks = [
@@ -29,6 +32,7 @@
       "numi"
       "obsidian"
       "orbstack"
+      "podman"
       "postman"
       "rectangle"
       "redis-insight"

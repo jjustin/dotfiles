@@ -15,6 +15,7 @@
       htop
       jq
       jwt-cli
+      magic-wormhole
       minio-client
       mise
       # neovim # installed via nixvim, installing it here breaks the nixvim modules
