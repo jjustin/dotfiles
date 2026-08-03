@@ -4,7 +4,6 @@
   pkgs,
   nixpkgs,
   inputs,
-  my,
   ...
 }:
 
@@ -13,17 +12,18 @@
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
-    inputs.homebrew.homeManagerModules.default
     ./fonts.nix
-    ./homebrew.nix
     ./packages.nix
     ./programs
+  
+    inputs.homebrew.homeManagerModules.default
+    ./homebrew.nix
   ];
 
   programs.home-manager.enable = true;
 
-  home.username = my.vars.user.username;
-  home.homeDirectory = my.vars.user.homeDirectory;
+  home.username = config.my.vars.user.username;
+  home.homeDirectory = config.my.vars.user.homeDirectory;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

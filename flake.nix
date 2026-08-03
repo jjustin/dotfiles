@@ -16,7 +16,7 @@
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
       # to avoid problems caused by different versions of nixpkgs dependencies.
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim = {
@@ -55,11 +55,24 @@
       ...
     }@inputs:
     let
+      homeModules = {
+        host,
+      }: [
+        ./variables.nix
+        ./private
+
+        ./modules/home-manager/home.nix
+        host
+        ({config, lib,...}: {
+          nixpkgs.config.allowUnfreePredicate =
+            pkg: builtins.elem (lib.getName pkg) config.my.vars.unfreePackages;
+        })
+      ];
       getConfiguration =
         {
           home-manager-module,
           system,
-          conf,
+          host,
         }:
         {
           system = system;
@@ -67,7 +80,7 @@
 
           modules = [
             home-manager-module
-            conf
+            host
             ./variables.nix
             ./private
 
@@ -91,7 +104,7 @@
 
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-
+ 
                 home-manager.users.${config.my.vars.user.username} = import ./modules/home-manager/home.nix;
               }
             )
@@ -108,16 +121,25 @@
         };
     in
     {
+      homeConfigurations = {
+        "gaming" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          
+          modules = homeModules {
+            host = ./hosts/gaming.nix;
+          };
+        };
+      };
+      
       nixosConfigurations = {
         "rpi" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModules.home-manager;
           system = "aarch64-linux";
           conf = ./hosts/rpi.nix;
-        });
-        "gaming" = nixpkgs.lib.nixosSystem (getConfiguration {
-          home-manager-module = home-manager.nixosModules.home-manager;
-          system = "x86_64-linux";
-          conf = ./hosts/gaming.nix;
         });
         "server" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModules.home-manager;

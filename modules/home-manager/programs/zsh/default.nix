@@ -44,6 +44,9 @@
     ];
 
     initContent = ''
+      # Inlcude home-manager managed packages (For some reason that is not added automatically by hm)
+      export PATH="$HOME/.nix-profile/bin:$PATH"
+      
       # kubectl
       source <(kubectl completion zsh)
 

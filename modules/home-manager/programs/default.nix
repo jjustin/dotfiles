@@ -21,7 +21,7 @@
     };
   };
 
-  services.macos-remap-keys = {
+  services.macos-remap-keys = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     enable = true;
     keyboard = {
       Capslock = "Escape";

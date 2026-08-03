@@ -1,7 +1,7 @@
 {
+  config,
   pkgs,
   lib,
-  my,
   ...
 }:
 {
@@ -30,7 +30,7 @@
       whois
       watch
     ]
-    ++ lib.optionals my.vars.host.work [
+    ++ lib.optionals config.my.vars.host.work [
       aws-vault
       awscli2
       direnv
@@ -55,7 +55,7 @@
       rustup
       sshuttle
     ]
-    ++ lib.optionals my.vars.host.personal [
+    ++ lib.optionals config.my.vars.host.personal [
       rar
     ];
 }

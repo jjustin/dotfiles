@@ -1,5 +1,5 @@
 {
-  my,
+  config,
   pkgs,
   inputs,
   lib,
@@ -8,12 +8,14 @@
 {
   # https://github.com/koalalorenzo/home-manager-brew#usage
   homebrew = {
+    enable = pkgs.stdenv.hostPlatform.isDarwin;
+    
     taps = [ ];
 
     formulae = [
       "mole"
     ]
-    ++ lib.optionals my.vars.host.work [
+    ++ lib.optionals config.my.vars.host.work [
       "graphviz" # for infrastructure-diagram-mcp-server
     ];
 
@@ -44,12 +46,12 @@
       "zed"
       "zen"
     ]
-    ++ lib.optionals my.vars.host.work [
+    ++ lib.optionals config.my.vars.host.work [
       "meetingbar"
       "insomnia"
       "slack"
     ]
-    ++ lib.optionals my.vars.host.personal [
+    ++ lib.optionals config.my.vars.host.personal [
       "balenaetcher"
       "caffeine"
       "calibre"

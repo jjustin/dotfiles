@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  my,
   ...
 }:
 
@@ -54,7 +53,7 @@
         sts = "status --short";
       };
 
-      user.name = my.vars.user.fullName;
+      user.name = config.my.vars.user.fullName;
 
       init.defaultBranch = "main";
 
@@ -84,7 +83,7 @@
 
     includes =
       let
-        includeConfig = my.private.gitIncludes;
+        includeConfig = config.my.private.gitIncludes;
       in
       map (key: {
         contents = includeConfig.${key} // {
