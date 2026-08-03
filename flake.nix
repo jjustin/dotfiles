@@ -55,19 +55,24 @@
       ...
     }@inputs:
     let
-      homeModules = {
-        host,
-      }: [
-        ./variables.nix
-        ./private
+      homeModules =
+        {
+          host,
+        }:
+        [
+          ./variables.nix
+          ./private
 
-        ./modules/home-manager/home.nix
-        host
-        ({config, lib,...}: {
-          nixpkgs.config.allowUnfreePredicate =
-            pkg: builtins.elem (lib.getName pkg) config.my.vars.unfreePackages;
-        })
-      ];
+          ./modules/home-manager/home.nix
+          host
+          (
+            { config, lib, ... }:
+            {
+              nixpkgs.config.allowUnfreePredicate =
+                pkg: builtins.elem (lib.getName pkg) config.my.vars.unfreePackages;
+            }
+          )
+        ];
       getConfiguration =
         {
           home-manager-module,
@@ -130,13 +135,13 @@
           extraSpecialArgs = {
             inherit inputs;
           };
-          
+
           modules = homeModules {
             host = ./hosts/gaming.nix;
           };
         };
       };
-      
+
       nixosConfigurations = {
         "rpi" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModules.home-manager;

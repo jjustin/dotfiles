@@ -2,8 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
-  my.vars ={
+}:
+{
+  my.vars = {
     host = {
       personal = true;
       work = false;

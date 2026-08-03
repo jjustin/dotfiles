@@ -15,7 +15,7 @@
     ./fonts.nix
     ./packages.nix
     ./programs
-  
+
     inputs.homebrew.homeManagerModules.default
     ./homebrew.nix
   ];

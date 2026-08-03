@@ -24,10 +24,11 @@ in
         PermitRootLogin = "without-password";
       };
     };
-  
+
     users.users.root = lib.mkIf cfg.enableRootKeyLogin {
       openssh.authorizedKeys.keys = config.my.vars.user.sshAuthorizedKeys;
     };
-  
+
     programs.ssh.startAgent = cfg.enableAgent;
-  };}
+  };
+}

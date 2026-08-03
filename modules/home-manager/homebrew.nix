@@ -9,7 +9,7 @@
   # https://github.com/koalalorenzo/home-manager-brew#usage
   homebrew = {
     enable = pkgs.stdenv.hostPlatform.isDarwin;
-    
+
     taps = [ ];
 
     formulae = [
@@ -35,7 +35,6 @@
       "numi"
       "obsidian"
       "orbstack"
-      "podman"
       "postman"
       "rectangle"
       "redis-insight"
