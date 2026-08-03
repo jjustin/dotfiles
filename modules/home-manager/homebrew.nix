@@ -14,6 +14,7 @@
 
     formulae = [
       "mole"
+      "podman"
     ]
     ++ lib.optionals config.my.vars.host.work [
       "graphviz" # for infrastructure-diagram-mcp-server

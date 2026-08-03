@@ -104,8 +104,10 @@
 
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
- 
-                home-manager.users.${config.my.vars.user.username} = import ./modules/home-manager/home.nix;
+
+                home-manager.users.${config.my.vars.user.username}.imports = homeModules {
+                  host.my.vars = config.my.vars;
+                };
               }
             )
           ]
@@ -139,17 +141,17 @@
         "rpi" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModules.home-manager;
           system = "aarch64-linux";
-          conf = ./hosts/rpi.nix;
+          host = ./hosts/rpi.nix;
         });
         "server" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModules.home-manager;
           system = "x86_64-linux";
-          conf = ./hosts/server.nix;
+          host = ./hosts/server.nix;
         });
         "wsl" = nixpkgs.lib.nixosSystem (getConfiguration {
           home-manager-module = home-manager.nixosModules.home-manager;
           system = "x86_64-linux";
-          conf = ./hosts/wsl.nix;
+          host = ./hosts/wsl.nix;
         });
       };
 
@@ -157,12 +159,12 @@
         "personal-mac" = nix-darwin.lib.darwinSystem (getConfiguration {
           home-manager-module = home-manager.darwinModules.home-manager;
           system = "aarch64-darwin";
-          conf = ./hosts/personal-mac.nix;
+          host = ./hosts/personal-mac.nix;
         });
         "work" = nix-darwin.lib.darwinSystem (getConfiguration {
           home-manager-module = home-manager.darwinModules.home-manager;
           system = "aarch64-darwin";
-          conf = ./hosts/work.nix;
+          host = ./hosts/work.nix;
         });
       };
     };
