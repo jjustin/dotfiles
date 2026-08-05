@@ -9,7 +9,7 @@
     with pkgs;
     [
       dig
-      # claude-code
+      claude-code
       nono # nono is a sandbox for claude
       git
       gnupg
