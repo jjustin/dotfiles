@@ -26,7 +26,6 @@
       "brave-browser"
       "bruno"
       "chromium"
-      "claude-code"
       "discord"
       "drawio"
       "firefox"
