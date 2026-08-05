@@ -9,6 +9,7 @@
     with pkgs;
     [
       dig
+      claude-agent-acp # acp bindings for claude-code
       claude-code
       nono # nono is a sandbox for claude
       git
