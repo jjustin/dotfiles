@@ -19,7 +19,6 @@
       jq
       jwt-cli
       magic-wormhole
-      minio-client
       mise
       # neovim # installed via nixvim, installing it here breaks the nixvim modules
       # ngrok
@@ -36,6 +35,7 @@
     ++ lib.optionals config.my.vars.host.work [
       aws-vault
       awscli2
+      bruno-cli
       direnv
       dive
       (google-cloud-sdk.withExtraComponents [
