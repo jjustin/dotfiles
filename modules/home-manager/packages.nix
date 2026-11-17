@@ -19,7 +19,7 @@
       jq
       jwt-cli
       magic-wormhole
-      mise
+      # mise
       # neovim # installed via nixvim, installing it here breaks the nixvim modules
       # ngrok
       nil # nix LSP

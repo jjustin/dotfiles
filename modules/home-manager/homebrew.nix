@@ -13,6 +13,7 @@
     taps = [ ];
 
     formulae = [
+      "mise"
       "mole"
       "podman"
     ]
