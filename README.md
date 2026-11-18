@@ -39,6 +39,19 @@ See `private/options.nix` for it's structure.
 
 1. Terminate NixOS WSL distro with `wsl -t NixOS` and restart to enable newly crated user to be used with NixOS
 
+### Home-manager
+
+If not using nix-os, first enable nix command and flakes:
+
+```sh
+echo 'experimental-features = nix-command flakes' | sudo tee -a /etc/nix/nix.conf
+sudo systemctl restart nix-daemon
+```
+
+```sh
+nix run home-manager/master -- switch --flake path:///home/jjustin/dotfiles#gaming
+```
+
 ## Rebuilding
 
 rebuild with:
@@ -66,6 +79,12 @@ or
 
 ```sh
 darwin-rebuild switch --flake path:///path/to/flake#work
+```
+
+or
+
+```sh
+home-manager switch --flake path:///path/to/flake#gaming
 ```
 
 ## Uninstall nix
